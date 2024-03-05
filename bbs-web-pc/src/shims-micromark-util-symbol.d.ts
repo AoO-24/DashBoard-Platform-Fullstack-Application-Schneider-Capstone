@@ -1,0 +1,1 @@
+module 'micromark-util-symbol'

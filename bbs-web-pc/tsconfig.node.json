@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true //解决别名报错模块 ""path"" 只能在使用 "allowSyntheticDefaultImports" 标志时进行默认导入
+  },
+  "include": ["vite.config.ts"]
+}

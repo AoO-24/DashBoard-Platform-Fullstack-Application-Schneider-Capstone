@@ -1,0 +1,28 @@
+//注意：Sass定义私有成员是使用-或开头，例如定义$--color-black-10这种是私有变量，使用additionalData: `@use 引入时无法读取
+
+
+//黑色
+$color-black-10: #f7f8fa;
+$color-black-20: #f2f3f5;
+$color-black-23: #eeeff2;
+$color-black-25: #ebecf0;
+$color-black-30: #e5e6eb;
+$color-black-35: #d7dae0;
+$color-black-40: #c9cdd4;
+$color-black-45: #b9bdc6;
+$color-black-50: #a9aeb8;
+$color-black-60: #86909c;
+$color-black-70: #6b7785;
+$color-black-80: #4e5969;
+$color-black-90: #272e3b;
+$color-black-100: #1d2129;
+
+//蓝色
+$color-blue-10:#ecf5ff;
+$color-blue-20:#d9ecff;
+$color-blue-30:#c6e2ff;
+$color-blue-40:#a0cfff;
+$color-blue-50:#79bbff;
+$color-blue-60:#409eff;
+$color-blue-70:#337ecc;
+
