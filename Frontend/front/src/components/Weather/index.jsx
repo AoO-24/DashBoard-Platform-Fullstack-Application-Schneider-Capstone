@@ -31,6 +31,7 @@ function Weather() {
             {weatherData ? (
                 <div>
                     <p>Temperature: {weatherData?.data?.timelines[0]?.intervals[0]?.values?.temperature}°C</p>
+                    <p>Humility: {weatherData?.data?.timelines[0]?.intervals[0]?.values?.humility}</p>
                 </div>
             ) : (
                 <p>Loading...</p>
