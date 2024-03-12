@@ -1,5 +1,6 @@
 # Team Progress and Direction
 
+# Mar. 1st, 2024
 ## Meeting Overview
 
 This report summarizes the key points discussed during our recent team meeting, which was held to communicate our progress to the company and address our concerns regarding the project's direction. The meeting was productive, with positive feedback from the company regarding our initial efforts and a constructive response to our concerns.
@@ -39,3 +40,15 @@ With the new direction provided, we outlined the following steps to move forward
 ## Conclusion
 
 The meeting with the company was a pivotal moment for our team, providing us with the direction needed to focus our efforts more effectively. The company's satisfaction with our start boosts our confidence, and the clarification of the project's aim allows us to proceed with a clearer understanding of our goals. We are committed to leveraging the data provided to develop meaningful solutions that will positively impact truck drivers' earnings and habits.
+
+
+
+# Mar. 8th, 2024
+In this week's meeting, we further discussed what we can do given the data and how to analyze it. Even though the manager lost the privilege to access the Schneider database, he has already requested access from his boss and will provide at least some of the schemas to us. Furthermore, he demo'ed the following:
+>https://www.platformscience.com/
+>Telematics + Fleet Management | Platform Science
+and
+>https://www.youtube.com/watch?v=KlLCMGl8O84
+>Platform Science Workflow - Demo - YouTube
+
+These are some videos for us to watch this week and get some sense about our job in the next following couple of weeks.
