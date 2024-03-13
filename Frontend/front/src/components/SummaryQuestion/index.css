@@ -1,0 +1,30 @@
+.question-container {
+    background-color: #f4f4f4; /* 浅灰色背景 */
+    padding: 20px; /* 内边距 */
+    border-radius: 8px; /* 圆角边框 */
+    max-width: 600px; /* 最大宽度 */
+    margin: 20px auto; /* 上下外边距和自动左右外边距，居中对齐 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微的阴影效果 */
+  }
+  
+  .question-container p {
+    color: #333; /* 深灰色文本 */
+    font-size: 16px; /* 文本大小 */
+    line-height: 1.5; /* 行间距 */
+    margin-bottom: 15px; /* 段落之间的外边距 */
+  }
+  
+  .back-button {
+    display: inline-block; /* 使链接显示为块状元素 */
+    background-color: #007bff; /* 蓝色背景 */
+    color: #ffffff; /* 白色文本 */
+    padding: 10px 15px; /* 内边距 */
+    text-decoration: none; /* 去除下划线 */
+    border-radius: 5px; /* 圆角边框 */
+    transition: background-color 0.3s ease; /* 背景颜色渐变效果 */
+  }
+  
+  .back-button:hover {
+    background-color: #0056b3; /* 鼠标悬停时的背景颜色 */
+  }
+  
