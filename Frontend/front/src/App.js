@@ -20,8 +20,8 @@ import AppointmentSuccess from "./components/AppointmentSuccess";
 import SummaryQuestion from "./components/SummaryQuestion";
 import DestinationConfirmation from "./components/DestinationConfirmation";
 import DestinationSuccess from "./components/DestinationSuccess";
-import showTime from "./components/showTime/showTime.jsx";
 import MusicPlayer from "./components/MusicPlayer/index.jsx";
+import ShowTime from "./components/showTime/showTime.jsx";
 
 
 // 定义主要的App组件
@@ -99,7 +99,7 @@ function App() {
         <Route path="/summary_question" element={<SummaryQuestion />} />
         <Route path="/community_support" element={<CommunitySupport />} />
         <Route path="/music_player" element={<MusicPlayer />} />
-        <Route path="/show_Time" element={<showTime/>} />
+        <Route path="/show_Time" element={<ShowTime/>} />
       </Routes>
     </Router>
   );
