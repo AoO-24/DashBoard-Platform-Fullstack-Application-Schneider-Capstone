@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7995e81b.css",
+    "main.js": "/static/js/main.90a0d69a.js",
+    "static/js/453.80efc53e.chunk.js": "/static/js/453.80efc53e.chunk.js",
+    "static/media/truck.jpeg": "/static/media/truck.42681a62843da5f8b9dd.jpeg",
+    "index.html": "/index.html",
+    "main.7995e81b.css.map": "/static/css/main.7995e81b.css.map",
+    "main.90a0d69a.js.map": "/static/js/main.90a0d69a.js.map",
+    "453.80efc53e.chunk.js.map": "/static/js/453.80efc53e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7995e81b.css",
+    "static/js/main.90a0d69a.js"
+  ]
+}
