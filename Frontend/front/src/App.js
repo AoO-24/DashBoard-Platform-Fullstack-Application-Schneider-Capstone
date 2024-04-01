@@ -20,7 +20,9 @@ import AppointmentSuccess from "./components/AppointmentSuccess";
 import SummaryQuestion from "./components/SummaryQuestion";
 import DestinationConfirmation from "./components/DestinationConfirmation";
 import DestinationSuccess from "./components/DestinationSuccess";
+import showTime from "./components/showTime/showTime.jsx";
 import MusicPlayer from "./components/MusicPlayer/index.jsx";
+
 
 // 定义主要的App组件
 function App() {
@@ -67,6 +69,9 @@ function App() {
                 <Link to="/music_player" className="nav-button">
                   Music Player
                 </Link>
+                <Link to="/show_Time"  className="nav-button">
+                  Showing Time
+                </Link>
               </nav>
             </div>
           }
@@ -94,6 +99,7 @@ function App() {
         <Route path="/summary_question" element={<SummaryQuestion />} />
         <Route path="/community_support" element={<CommunitySupport />} />
         <Route path="/music_player" element={<MusicPlayer />} />
+        <Route path="/show_Time" element={<showTime/>} />
       </Routes>
     </Router>
   );
