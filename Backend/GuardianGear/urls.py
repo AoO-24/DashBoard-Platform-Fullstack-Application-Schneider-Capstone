@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from .views import FrontendAppView
+from .views import FrontendAppView, RemainingHoursView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     re_path(r'^.*$', FrontendAppView.as_view(), name='app'),
+    path('drivers/<int:driver_id>/appointments/<int:appointment_id>/remaining_hours/', RemainingHoursView.as_view(),
+         name='remaining_hours'),
 ]
