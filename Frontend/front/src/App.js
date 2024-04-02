@@ -22,6 +22,8 @@ import DestinationConfirmation from "./components/DestinationConfirmation";
 import DestinationSuccess from "./components/DestinationSuccess";
 import MusicPlayer from "./components/MusicPlayer/index.jsx";
 import ShowTime from "./components/showTime/showTime.jsx";
+// 导入RemainingHoursView组件
+import RemainingHoursView from "./components/RemainingHoursView/RemainingHoursView";
 
 
 // 定义主要的App组件
@@ -93,6 +95,7 @@ function App() {
         <Route path="/report/9hour" element={<NineHourReport />} />
         <Route path="/community_tips" element={<CommunityTips />} />
         <Route path="/driving_summary" element={<DrivingSummary />} />
+        <Route path="/remaining-hours" element={<RemainingHoursView />} />
         <Route path="/feel_unwell" element={<FeelUnwell />} />
         <Route path="/summary_question" element={<SummaryQuestion />} />
         <Route path="/appointment_success" element={<AppointmentSuccess />} />
@@ -101,6 +104,9 @@ function App() {
         <Route path="/music_player" element={<MusicPlayer />} />
         <Route path="/show_Time" element={<ShowTime/>} />
       </Routes>
+        <nav className="App-nav">
+            <Link to="/remaining-hours" className="nav-button">Remaining Hours</Link>
+          </nav>
     </Router>
   );
 }

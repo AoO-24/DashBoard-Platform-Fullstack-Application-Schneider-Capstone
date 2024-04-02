@@ -1,9 +1,8 @@
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views import View
-from .models import Driver, Hours, Appointment
 from django.db.models import Sum
-
+from .models import Driver, Hours, Appointment
 
 # View that serves the index.html from React build folder
 class FrontendAppView(TemplateView):
