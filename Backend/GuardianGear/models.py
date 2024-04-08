@@ -16,5 +16,5 @@ class Hours(models.Model):
 class Appointment(models.Model):
     driver = models.ForeignKey(Driver, on_delete=models.CASCADE)
     appt_start = models.DateTimeField(null=True, blank=True)
-    appt_start = models.DateTimeField(null=True, blank=True)
+    appt_end = models.DateTimeField(null=True, blank=True)
     estimated_time = models.DecimalField(max_digits=5, decimal_places=2)

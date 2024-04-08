@@ -20,7 +20,6 @@ from .views import FrontendAppView, RemainingHoursView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('api/remaining-hours/<int:driver_id>/<int:appointment_id>/', RemainingHoursView.as_view(), name='remaining-hours'),
     re_path(r'^.*$', FrontendAppView.as_view(), name='app'),
-    path('drivers/<int:driver_id>/appointments/<int:appointment_id>/remaining_hours/', RemainingHoursView.as_view(),
-         name='remaining_hours'),
 ]

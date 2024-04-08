@@ -20,8 +20,8 @@ def calculate_remaining_hours(driver_id, appointment_id):
     return remaining_hours
 
 
-# In your RemainingHoursView, you can now call this function directly:
 class RemainingHoursView(View):
     def get(self, request, driver_id, appointment_id):
+        print(1)
         remaining_hours = calculate_remaining_hours(driver_id, appointment_id)
         return JsonResponse({'remaining_hours': remaining_hours})

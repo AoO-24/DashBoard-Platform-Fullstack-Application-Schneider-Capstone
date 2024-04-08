@@ -21,6 +21,7 @@ import SummaryQuestion from './components/SummaryQuestion';
 import DestinationConfirmation from './components/DestinationConfirmation';
 import DestinationSuccess from './components/DestinationSuccess';
 import MusicPlayer from './components/MusicPlayer/index.jsx';
+import RemainingHours from './components/RemainingHours/RemainingHours.jsx';
 
 
 // Define the main App component
@@ -35,7 +36,7 @@ function App() {
               <h1>Welcome to Schneider Truck</h1>
             </header>
             <nav className="App-nav">
-           <Link to="/destination" className="nav-button">Enter Your Destination</Link>
+              <Link to="/destination" className="nav-button">Enter Your Destination</Link>
               <Link to="/report" className="nav-button">Report Time</Link>
               <Link to="/weather" className="nav-button">Weather Today</Link>
               <Link to="/about_us" className="nav-button">About US</Link>
@@ -43,6 +44,7 @@ function App() {
               <Link to="/driving_summary" className="nav-button">Driving Summary</Link>
               <Link to="/community_support" className="nav-button">Community Support</Link>
               <Link to="/music_player" className="nav-button">Music Player</Link>
+              <Link to="/remaining-hours/${driverId}/${appointmentId}" className="nav-button">Remaining Hours</Link>
             </nav>
           </div>
         } />
@@ -65,6 +67,7 @@ function App() {
           <Route path="/summary_question" element={<SummaryQuestion />} />
           <Route path="/community_support" element={<CommunitySupport />} />
           <Route path="/music_player" element={<MusicPlayer />} />
+          <Route path="/remaining-hours/:driverId/:appointmentId" element={<RemainingHours />} />
       </Routes>
     </Router>
   );
