@@ -5,7 +5,7 @@
 }
 
 .app-logo {
-  width: 200px; /* 或根据你的布局需要调整 */
+  width: 200px; 
   height: auto;
   margin-bottom: 20px;
 }
@@ -36,7 +36,7 @@
   padding: 10px 20px;
   border-radius: 20px; /* Rounded corners for buttons */
   transition: color 0.3s ease, background-color 0.3s ease;
-  font-weight: bold;
+  font-weight: bold
 }
 
 .nav-button:hover, .nav-button:active {

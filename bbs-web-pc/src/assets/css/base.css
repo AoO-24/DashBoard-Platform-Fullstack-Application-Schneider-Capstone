@@ -1,0 +1,177 @@
+* {
+	word-wrap: break-word;
+	margin: 0;
+    padding: 0;
+}
+
+body {
+	color: #4E5969;
+	background: #F7F8FA;
+}
+
+body,select {
+	font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB','Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+	font-size: 14px;
+	line-height:1.5;
+	color: #4E5969;
+}
+
+textarea {
+	resize: none;
+}
+
+body,ul,ol,li,dl,dd,p,h1,h2,h3,h4,h5,h6,form,fieldset{
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	empty-cells: show;
+	border-collapse: collapse;
+}
+
+caption,th {
+	text-align: left;
+	font-weight: 400;
+}
+
+ul li{
+	list-style: none;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 1em;
+}
+
+cite,i {
+	font-style: normal;
+}
+
+a img {
+	border: none;
+}
+
+label {
+	cursor: pointer;
+}
+
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr{
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+caption,th {
+	text-align: left;
+	font-weight: normal;
+}
+
+html,body,fieldset,img,iframe,abbr {
+	border: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+
+ol,ul,li {
+	list-style: none;
+}
+/**
+h1,h2,h3,h4,h5,h6,small {
+	font-size: 100%;
+	font-weight: normal
+}**/
+
+textarea {
+	overflow: auto;
+	resize: none;
+}
+
+label {
+	cursor: default;
+}
+
+a,button {
+	cursor: pointer;
+}
+a {
+	outline: none;
+	text-decoration: none;
+	color: #A9AEB8;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #409eff;
+}
+ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+html,body{
+	margin:0;
+	padding:0;
+	height: 100%;
+}
+*:focus { outline: none; }
+
+.clearfix {
+	zoom: 1;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clear{clear:both;height:0px;overflow:hidden;padding:0px;margin:0px;}
+
+
+
+
+
+/* 正文 */
+.main{
+	flex-grow: 1;
+    flex-shrink: 0;
+	
+}
+.main-container{
+	margin:0 auto;
+	margin-top:0px;
+}
+.main-fullScreen{
+	/*min-height: calc(100vh - 170px)*/
+	height: 100%;
+}
+
+
+/* 背景 */
+.backgroundModule{
+	background: #fff; 
+	box-shadow: 0 0px 3px 0 rgba(0,0,0,.02), 0 4px 8px 0 rgba(0,0,0,.02);
+	
+}
+.wrap{width:1210px;}
+
+#app{
+	display: flex;
+    flex-direction: column;
+    width: 100%;
+    /*min-height: 100%;*/
+	height: 100%;
+}
+
+
+
