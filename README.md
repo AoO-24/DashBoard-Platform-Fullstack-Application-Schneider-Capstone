@@ -53,17 +53,8 @@ Our approach to implementing the developed solutions includes:
 
 ## Future Directions
 
-We anticipate evolving the project based on ongoing data analysis, technological advancements, and feedback from stakeholders. Our aim is to continuously improve the solutions offered to truck drivers, thereby enhancing their productivity, earnings, and job satisfaction.
-
-## Contributors
-
-- Project Lead: [Name, Contact Information]
-- Data Analysis Team: [Names, Contact Information]
-- Solution Development Team: [Names, Contact Information]
-- Pilot Implementation Team: [Names, Contact Information]
+We anticipate evolving the project based on ongoing data analysis, technological advancements, and feedback from tutors. Our aim is to continuously improve the solutions offered to truck drivers, thereby enhancing their productivity, earnings, and job satisfaction.
 
 ## Feedback and Contributions
 
-We welcome feedback and contributions from all stakeholders involved in this project. Please feel free to reach out to the project lead or any team members for discussions, suggestions, or inquiries about contributing to the project.
-
-For feedback and contributions, please contact: [Contact Information]
+We welcome feedback and contributions from all tutors involved in this project. Please feel free to reach out to the project lead or any team members for discussions, suggestions, or inquiries about contributing to the project.
