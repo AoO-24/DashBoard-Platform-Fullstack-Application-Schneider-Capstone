@@ -1,0 +1,10 @@
+.confirmation-container, .success-container {
+    text-align: center;
+    padding: 20px;
+    color: var(--schneider-white);
+  }
+  
+  .confirmation-container button, .success-container a {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,33 @@
+.confirmation-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #333; /* 施耐德暗色背景 */
+  color: #fff; /* 白色文字 */
+}
+
+.confirmation-container h2 {
+  color: #ffcc00; /* 施耐德黄色 */
+  font-size: 24px; /* 加大字体 */
+  font-weight: bold; /* 加粗字体 */
+}
+
+.confirmation-container p {
+  margin: 20px 0;
+  font-size: 18px; /* 加大字体 */
+}
+
+.confirmation-container button {
+  background-color: #ffcc00; /* 施耐德黄色按钮 */
+  color: #333; /* 按钮内的暗色文字 */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px; /* 加大字体 */
+  font-weight: bold; /* 加粗字体 */
+  transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+.confirmation-container button:hover {
+  background-color: #e6b800; /* 按钮悬停时的深黄色 */
+}

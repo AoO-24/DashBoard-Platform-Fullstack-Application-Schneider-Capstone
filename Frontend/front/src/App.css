@@ -1,0 +1,242 @@
+/* General styles for the app */
+.App {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-logo {
+  width: 200px; 
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.App-header {
+  background-color: #ff8c00; /* Bright header color */
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px; /* Adds space below the header */
+}
+
+/* Navigation bar styles */
+.App-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between navigation buttons */
+  flex-wrap: wrap; /* Allow the nav items to wrap on small screens */
+  padding: 20px 0;
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+  text-decoration: none;
+  color: #333;
+  background-color: #e7e7e7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px; /* Rounded corners for buttons */
+  transition: color 0.3s ease, background-color 0.3s ease;
+  font-weight: bold
+}
+
+.nav-button:hover, .nav-button:active {
+  background-color: #d4d4d4;
+  color: #222;
+}
+
+/* Styles specific to the report time page */
+.report-time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.time-button:hover {
+  transform: translateY(-2px);
+  background-color: #0056b3;
+}
+
+.report-time-container h1 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .buttons-container {
+    gap: 0.5rem;
+  }
+  
+  .time-button {
+    padding: 0.5rem 1rem;
+  }
+}
+.back-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Centering styles for hour report containers */
+.hour-report-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use the full height of the viewport */
+  text-align: center;
+}
+
+/* Centering styles for the report time container */
+.report-time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use the full height of the viewport */
+  text-align: center;
+  padding: 0; /* Remove padding to ensure true centering */
+}
+
+/* Styles for the buttons container to ensure it also centers well */
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px; /* Adds some space between the question and the buttons */
+}
+
+/* Styles for individual time buttons */
+.time-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #007bff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none; /* Removes the underline */
+}
+
+.time-button:hover {
+  transform: translateY(-2px);
+  background-color: #0056b3;
+}
+
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use the full height of the viewport */
+  text-align: center;
+}
+
+/* Centering styles for the tips container */
+.tips-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Centering styles for the driving summary container */
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Use the full height of the viewport */
+  text-align: center;
+}
+
+.summary-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.summary-button:hover {
+  background-color: #0056b3;
+}
+
+/* Centering and styling for the appointment container */
+.appointment-container, .success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.appointment-button, .back-button {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.appointment-button:hover, .back-button:hover {
+  background-color: #0056b3;
+}
+
+/* Centering and styling for the question container */
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Assuming .back-button styling is already defined as per previous instructions */
+

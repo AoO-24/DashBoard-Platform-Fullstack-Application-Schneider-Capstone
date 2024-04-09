@@ -1,0 +1,51 @@
+.form-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff; /* White background */
+  border-radius: 8px;
+  margin: auto;
+  max-width: 600px; /* Maximum width of the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container label {
+  font-weight: bold;
+  color: #333; /* Dark color for the text */
+  margin-bottom: 0.5rem;
+}
+
+.form-container input {
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 2px solid #ffcc00; /* Schneider yellow border */
+  border-radius: 5px;
+  width: 100%; /* Full width */
+  max-width: 300px; /* Maximum width */
+}
+
+.form-container button {
+  background-color: #ffcc00; /* Schneider yellow for the button */
+  color: #333; /* Dark text color for contrast */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase; /* Uppercase text for the button */
+}
+
+.form-container button:hover {
+  background-color: #e6b800; /* A darker yellow on hover */
+}
+
+.truck-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
