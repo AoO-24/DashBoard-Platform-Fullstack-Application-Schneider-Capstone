@@ -155,7 +155,7 @@ function plotGraphsForDriver(driverData) {
 
 
 // Step 1: Data Processing and Analysis
-fetch('data.csv')
+fetch('data_v2.csv')
     .then(response => response.text())
     .then(csvData => {
         // Parse CSV data
