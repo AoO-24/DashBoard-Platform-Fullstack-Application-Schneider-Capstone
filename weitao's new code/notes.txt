@@ -1,3 +1,7 @@
 
-Particles.js
-chart.js
+TODO:
+1. change the chart. Now it has 2 y axis.
+2. write an explaination for the chart (analysis).
+3. discuss about the style and current progress.
+
+

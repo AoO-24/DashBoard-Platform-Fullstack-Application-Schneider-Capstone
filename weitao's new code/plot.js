@@ -1,11 +1,49 @@
 // In data-processing-and-plots.js
 
+
+function getPeersDataForComparison(driverData, processedData) {
+    console.log("driver: ", driverData)
+    console.log("processed: ", processedData)
+    const peers = processedData.filter(data =>
+        data.weeklySalary > driverData.weeklySalary &&
+        data.routeComplexity == driverData.routeComplexity);
+
+    if (peers.length === 0) {
+        return null; // No peers found for comparison
+    }
+
+    // Calculate averages for comparison
+    const averages = peers.reduce((acc, peer, index, array) => {
+        // Check if it's the last row
+        if (index === array.length - 1) {
+            // Optionally, you can perform any final calculations or actions here
+            return acc;
+        }
+
+        console.log("peer: ", peer)
+        acc.averageSpeed += peer.averageSpeed;
+        acc.fuelConsumption += peer.fuelConsumption;
+        acc.customerSatisfaction += peer.customerSatisfaction;
+        console.log("acc: ", acc)
+        acc.count++;
+        return acc;
+
+
+    }, { averageSpeed: 0, fuelConsumption: 0, customerSatisfaction: 0, count: 0 });
+
+    averages.averageSpeed /= averages.count;
+    averages.fuelConsumption /= averages.count;
+    averages.customerSatisfaction /= averages.count;
+
+    return averages; // Return averages for plotting
+}
+
 // Function to plot graphs for a selected driver
-function plotGraphsForDriver(driverData) {
+function plotGraphsForDriver(driverData, averages, peerAverages) {
+    console.log("peer avg: ", peerAverages)
     const plotsSection = document.getElementById('plots');
     plotsSection.innerHTML = ''; // Clear the plots section for new content
 
-    // Create and append a new canvas element
     const canvas = document.createElement('canvas');
     canvas.id = 'performance-analysis-chart';
     canvas.width = 600; // Increased width for additional datasets
@@ -14,29 +52,25 @@ function plotGraphsForDriver(driverData) {
 
     const ctx = canvas.getContext('2d');
 
-    // Define gradients for each dataset
-    const speedGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    speedGradient.addColorStop(0, '#007bff'); // Bright blue
-    speedGradient.addColorStop(1, '#6610f2'); // Deep purple
+    // Define gradients for the driver and peers datasets
+    const driverGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    driverGradient.addColorStop(0, '#007bff'); // Bright blue for driver
+    driverGradient.addColorStop(1, '#6610f2'); // Deep purple for driver
 
-    const fuelGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    fuelGradient.addColorStop(0, '#28a745'); // Green
-    fuelGradient.addColorStop(1, '#dc3545'); // Red
+    const peerGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    peerGradient.addColorStop(0, '#FFA500'); // Orange for peers
+    peerGradient.addColorStop(1, '#dc3545'); // Red for peers
 
-    const satisfactionGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    satisfactionGradient.addColorStop(0, '#ffc107'); // Yellow
-    satisfactionGradient.addColorStop(1, '#fd7e14'); // Orange
-
-    // Initialize the chart
-    new Chart(ctx, {
+    // Initialize the chart with additional datasets for peer comparisons
+    const chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Driver ' + driverData.driverNumber], // Label for clarity
+            labels: ['Driver ' + driverData.driverNumber, 'Peers'], // Label for clarity
             datasets: [
                 {
                     label: 'Average Speed (mph)',
-                    data: [driverData.averageSpeed],
-                    backgroundColor: speedGradient,
+                    data: [driverData.averageSpeed, peerAverages ? peerAverages.averageSpeed : null],
+                    backgroundColor: [driverGradient, peerGradient],
                     borderColor: '#343a40', // Dark gray for contrast
                     borderWidth: 1,
                     borderRadius: 2,
@@ -44,8 +78,8 @@ function plotGraphsForDriver(driverData) {
                 },
                 {
                     label: 'Fuel Consumption (gallons/100 miles)',
-                    data: [driverData.fuelConsumption],
-                    backgroundColor: fuelGradient,
+                    data: [driverData.fuelConsumption, peerAverages ? peerAverages.fuelConsumption : null],
+                    backgroundColor: [driverGradient, peerGradient],
                     borderColor: '#343a40', // Dark gray for contrast
                     borderWidth: 1,
                     borderRadius: 2,
@@ -53,8 +87,8 @@ function plotGraphsForDriver(driverData) {
                 },
                 {
                     label: 'Customer Satisfaction (1-5 scale)',
-                    data: [driverData.customerSatisfaction],
-                    backgroundColor: satisfactionGradient,
+                    data: [driverData.customerSatisfaction, peerAverages ? peerAverages.customerSatisfaction : null],
+                    backgroundColor: [driverGradient, peerGradient],
                     borderColor: '#343a40', // Dark gray for contrast
                     borderWidth: 1,
                     borderRadius: 2,
@@ -78,7 +112,7 @@ function plotGraphsForDriver(driverData) {
                     title: {
                         display: true,
                         text: 'Speed & Fuel Consumption',
-                        color: '#343a40',
+                        // color: '#343a40',
                     },
                 },
                 y1: {
@@ -93,7 +127,7 @@ function plotGraphsForDriver(driverData) {
                     title: {
                         display: true,
                         text: 'Fuel Consumption',
-                        color: '#343a40',
+                        // color: '#343a40',
                     },
                 },
                 y2: {
@@ -108,7 +142,7 @@ function plotGraphsForDriver(driverData) {
                     title: {
                         display: true,
                         text: 'Customer Satisfaction',
-                        color: '#343a40',
+                        // color: '#343a40',
                     },
                 },
                 x: {
@@ -143,9 +177,31 @@ function plotGraphsForDriver(driverData) {
             animation: {
                 duration: 2000, // Slower animation for a dramatic entrance
                 easing: 'easeOutElastic', // Creates a stretching effect for the bars
-                onProgress: (animation) => {
-                    canvas.style.opacity = animation.currentStep / animation.numSteps;
+                onProgress: function (animation) {
+                    // const progress = animation.currentStep / animation.numSteps;
+                    // // Example: dynamically recreate the gradients with adjusted opacity
+                    // chart.data.datasets.forEach((dataset, index) => {
+                    //     const ctx = chart.ctx; // Get the canvas rendering context
+                    //     const canvas = chart.canvas; // Get the canvas element
+                    //     const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+
+                    //     // Assume these are your original gradient stops
+                    //     if (index === 0) { // Driver dataset
+                    //         gradient.addColorStop(0, `rgba(0, 123, 255, ${progress})`);
+                    //         gradient.addColorStop(1, `rgba(102, 16, 242, ${progress})`);
+                    //     } else { // Peer dataset
+                    //         gradient.addColorStop(0, `rgba(40, 167, 69, ${progress})`);
+                    //         gradient.addColorStop(1, `rgba(220, 53, 69, ${progress})`);
+                    //     }
+
+                    //     // Apply the dynamically created gradient to the dataset
+                    //     dataset.backgroundColor = gradient;
+                    // });
+
+                    // chart.update('none'); // Apply the update without triggering additional animations
                 },
+
+
             },
         }
     });
@@ -158,22 +214,54 @@ function plotGraphsForDriver(driverData) {
 fetch('data_v2.csv')
     .then(response => response.text())
     .then(csvData => {
-        // Parse CSV data
         const parsedData = Papa.parse(csvData, { header: true }).data;
 
-        // Perform data processing and analysis
+        // Calculate averages for comparison
+        const averages = parsedData.reduce((acc, row, index, array) => {
+            // Check if it's the last row
+            if (index === array.length - 1) {
+                // Optionally, you can perform any final calculations or actions here
+                return acc;
+            }
+
+            acc.averageSpeed += parseFloat(row.AVERAGE_SPEED);
+            acc.fuelConsumption += parseFloat(row.FUEL_CONSUMPTION);
+            acc.customerSatisfaction += parseInt(row.CUSTOMER_SATISFACTION);
+
+
+
+
+            acc.count++;
+            return acc;
+        }, { averageSpeed: 0, fuelConsumption: 0, customerSatisfaction: 0, count: 0 });
+
+        // Finalize averages
+        averages.averageSpeed /= averages.count;
+        averages.fuelConsumption /= averages.count;
+        averages.customerSatisfaction /= averages.count;
+
         const processedData = parsedData.map(row => ({
-            driverNumber: row.DRIVER_NUMBER,
+            driverNumber: parseInt(row.ID, 10),
+            hoursWorked: parseInt(row["Hours Worked"], 10),
+            deliveriesCompleted: parseInt(row["Deliveries Completed"], 10),
+            weeklySalary: parseInt(row["Weekly Salary"], 10),
+            routeComplexity: row["Route Complexity"],
+            weatherCondition: row["Weather Condition"],
+            vehicleType: row["Vehicle Type"],
+            trafficLevel: row["Traffic Level"],
+            dayOfWeek: row["Day of the Week"],
+            customerSatisfaction: parseInt(row.CUSTOMER_SATISFACTION, 10),
             averageSpeed: parseFloat(row.AVERAGE_SPEED),
-            fuelConsumption: parseFloat(row.FUEL_CONSUMPTION),
-            incidents: parseInt(row.INCIDENTS),
-            customerSatisfaction: parseInt(row.CUSTOMER_SATISFACTION)
+            milesDriven: parseFloat(row["Miles Driven"]),
+            fuelConsumption: parseFloat(row.FUEL_CONSUMPTION)
         }));
+
 
         // Populate driver selection dropdown
         const driverSelect = document.getElementById('driver-select');
         processedData.forEach(data => {
             const option = document.createElement('option');
+            // console.log(data.driverNumber);
             option.value = data.driverNumber; // Use driver number as value
             option.text = data.driverNumber;
             driverSelect.add(option);
@@ -181,16 +269,23 @@ fetch('data_v2.csv')
 
         // Add event listener to driver select dropdown
         driverSelect.addEventListener('change', function () {
-            const selectedDriverData = processedData.find(data => data.driverNumber === this.value);
+            // console.log("in: " + this.value)
+            const selectedDriverData = processedData.find(data => data.driverNumber == this.value);
             if (selectedDriverData) {
-                plotGraphsForDriver(selectedDriverData);
+                // console.log("selectc: " + selectedDriverData.driverNumber)
+                const peerAverages = getPeersDataForComparison(selectedDriverData, processedData);
+                console.log("in select driver data: ", peerAverages)
+                plotGraphsForDriver(selectedDriverData, averages, peerAverages);
             }
         });
 
+
         // Optionally, plot graphs for the first driver on initial load
         if (processedData.length > 0) {
-            plotGraphsForDriver(processedData[0]);
+
             driverSelect.value = processedData[0].driverNumber; // Set initial selection
+            const peerAverages = getPeersDataForComparison(processedData[0], processedData);
+            plotGraphsForDriver(processedData[0], averages, peerAverages);
         }
     })
     .catch(error => console.error('Error fetching or parsing data:', error));
