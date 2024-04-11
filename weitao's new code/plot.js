@@ -1,5 +1,8 @@
-// In data-processing-and-plots.js
 
+const originalBorderWidth = 1;
+const hoverBorderWidth = 8;
+const originalBorderColor = '#343a40'; // Dark gray for contrast
+const hoverBorderColor = '#ffdc00'; // Bright yellow for hover
 
 function getPeersDataForComparison(driverData, processedData) {
     console.log("driver: ", driverData)
@@ -55,7 +58,7 @@ function plotGraphsForDriver(driverData, averages, peerAverages) {
     // Define gradients for the driver and peers datasets
     const driverGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
     driverGradient.addColorStop(0, '#007bff'); // Bright blue for driver
-    driverGradient.addColorStop(1, '#6610f2'); // Deep purple for driver
+    driverGradient.addColorStop(1, '#9400D3'); // Deep purple for driver
 
     const peerGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
     peerGradient.addColorStop(0, '#FFA500'); // Orange for peers
@@ -71,8 +74,8 @@ function plotGraphsForDriver(driverData, averages, peerAverages) {
                     label: 'Average Speed (mph)',
                     data: [driverData.averageSpeed, peerAverages ? peerAverages.averageSpeed : null],
                     backgroundColor: [driverGradient, peerGradient],
-                    borderColor: '#343a40', // Dark gray for contrast
-                    borderWidth: 1,
+                    borderColor: originalBorderColor,
+                    borderWidth: originalBorderWidth,
                     borderRadius: 2,
                     yAxisID: 'y',
                 },
@@ -80,8 +83,8 @@ function plotGraphsForDriver(driverData, averages, peerAverages) {
                     label: 'Fuel Consumption (gallons/100 miles)',
                     data: [driverData.fuelConsumption, peerAverages ? peerAverages.fuelConsumption : null],
                     backgroundColor: [driverGradient, peerGradient],
-                    borderColor: '#343a40', // Dark gray for contrast
-                    borderWidth: 1,
+                    borderColor: originalBorderColor,
+                    borderWidth: originalBorderWidth,
                     borderRadius: 2,
                     yAxisID: 'y1',
                 },
@@ -89,8 +92,8 @@ function plotGraphsForDriver(driverData, averages, peerAverages) {
                     label: 'Customer Satisfaction (1-5 scale)',
                     data: [driverData.customerSatisfaction, peerAverages ? peerAverages.customerSatisfaction : null],
                     backgroundColor: [driverGradient, peerGradient],
-                    borderColor: '#343a40', // Dark gray for contrast
-                    borderWidth: 1,
+                    borderColor: originalBorderColor,
+                    borderWidth: originalBorderWidth,
                     borderRadius: 2,
                     yAxisID: 'y2',
                 }
@@ -172,6 +175,28 @@ function plotGraphsForDriver(driverData, averages, peerAverages) {
                     mode: 'index',
                     intersect: false,
                 }
+            },
+            onHover: (event, chartElements) => {
+                const chart = event.chart;
+                chart.data.datasets.forEach((dataset, i) => {
+                    // Reset to original properties for all datasets
+                    dataset.borderWidth = originalBorderWidth;
+                    dataset.borderColor = originalBorderColor;
+                });
+
+                // If hovering over a dataset, modify its properties
+                if (chartElements.length) {
+                    const { datasetIndex } = chartElements[0];
+                    chart.data.datasets[datasetIndex].borderWidth = hoverBorderWidth;
+                    chart.data.datasets[datasetIndex].borderColor = hoverBorderColor;
+                }
+
+                chart.update({
+                    duration: 800, // Adjust the animation duration as needed
+                    easing: 'easeOutElastic', // Experiment with different easing options
+                    active: true // Set active to true
+
+                });
             },
             // Keep the animation as it was
             animation: {

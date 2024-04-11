@@ -24,7 +24,7 @@ The graph currently utilizes a dual Y-axis format to represent different scales 
 
 ## TODOs
 
-- **Change the Chart**: The current chart configuration with two Y-axes can be complex to interpret. We plan to redesign the chart to simplify the visualization while retaining the depth of comparison.
+- **Change the Chart**: The current chart configuration with three Y-axes can be complex to interpret. We plan to redesign the chart to simplify the visualization while retaining the depth of comparison.
   
 - **Write an Explanation for the Chart (Analysis)**: An in-depth analysis will be added to accompany the chart. This will include interpretations of the data, key insights into performance discrepancies, and actionable recommendations for improvement.
   
