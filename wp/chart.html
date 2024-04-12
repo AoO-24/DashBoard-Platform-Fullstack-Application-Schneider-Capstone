@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Trucker Performance Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+
+<body>
+
+    <div style="width: 600px; margin: auto;">
+        <canvas id="barChart"></canvas>
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+        // Function to load CSV data and parse it
+        function loadCSVData(filePath, callback) {
+            Papa.parse(filePath, {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                complete: function (results) {
+                    callback(results.data);
+                }
+            });
+        }
+
+        // Function to initialize the bar chart
+        function initBarChart(data) {
+            const ctx = document.getElementById('barChart').getContext('2d');
+            const labels = data.map(item => item.Day);
+            const drivingData = data.map(item => item['Total Time Driving (hours)']);
+            const waitingData = data.map(item => item['Total Time Waiting (hours)']);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Time Driving',
+                        data: drivingData,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    }, {
+                        label: 'Total Time Waiting',
+                        data: waitingData,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Function to initialize the pie chart
+        function initPieChart(data) {
+            const totalDrivingTime = data.reduce((acc, cur) => acc + cur['Total Time Driving (hours)'], 0);
+            const totalWaitingTime = data.reduce((acc, cur) => acc + cur['Total Time Waiting (hours)'], 0);
+
+            const ctx = document.getElementById('pieChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Total Time Driving', 'Total Time Waiting'],
+                    datasets: [{
+                        data: [totalDrivingTime, totalWaitingTime],
+                        backgroundColor: ['rgba(54, 162, 235, 0.5)', 'rgba(255, 99, 132, 0.5)']
+                    }]
+                }
+            });
+        }
+
+        // Load the CSV data and initialize the charts
+        loadCSVData('John_Doe_Performance.csv', function (data) {
+            initBarChart(data);
+            initPieChart(data);
+        });
+    </script>
+
+</body>
+
+</html>
