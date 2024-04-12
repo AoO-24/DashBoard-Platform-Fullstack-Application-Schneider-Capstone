@@ -5,3 +5,15 @@ TODO:
 3. discuss about the style and current progress.
 
 
+jimmy: 
+货仓的大小，上货需不需要等待，易碎品，
+
+wenpei:
+
+minchao:
+货物的损坏率，货物的丢失率，货物的延迟率, customer satisfaction
+
+
+alston:
+判断你跟同类人挣钱为什么少？休息时间，去休息区的次数，油耗，车损，保费
+休息时间
