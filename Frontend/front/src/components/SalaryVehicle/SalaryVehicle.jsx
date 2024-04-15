@@ -73,7 +73,6 @@ const SalaryVehicle = () => {
         level_of_dangerousness: String(driver.level_of_dangerousness).trim(),
         urban_rural: String(driver.urban_rural).trim()
       };
-  
       setDriverInfo(driverInfo);
     } else {
       setDriverInfo('Driver not found');
