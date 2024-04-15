@@ -23,6 +23,7 @@ import MusicPlayer from "./components/MusicPlayer/index.jsx";
 import ShowTime from "./components/showTime/showTime.jsx";
 import RemainingHoursView from "./components/RemainingHoursView/RemainingHoursView";
 import MaintenanceLogForm from "./components/MaintenanceLogForm";
+import SalaryVehicle from "./components/SalaryVehicle/SalaryVehicle.jsx";
 
 
 // 定义主要的App组件
@@ -79,6 +80,10 @@ function App() {
                 <Link to="/remaining-hours" className="nav-button">
                 Remaining Hours
                 </Link>
+                <Link to="/salary-vehicle" className="nav-button">
+                Analyzing salary
+                </Link>
+                
               </nav>
             </div>
           }
@@ -108,6 +113,7 @@ function App() {
         <Route path="/music_player" element={<MusicPlayer />} />
         <Route path="/show_Time" element={<ShowTime/>} />
         <Route path="/maintenance_logs" element={<MaintenanceLogForm />} />
+        <Route path="/salary-vehicle" element={<SalaryVehicle />} />
       </Routes>
 
 

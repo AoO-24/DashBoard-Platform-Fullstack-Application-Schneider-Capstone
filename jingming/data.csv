@@ -1,0 +1,11 @@
+DriverID, salary, size_of_vehicle(1-5), level_of_dangerousness(1-5), urban_rural
+001,55000,3,	2,	Rural
+002,50000,2,	3,	Urban
+003,50000,4,	3,	Rural
+004,47000,2,	1,	Urban
+005,65000,5,	4,	Rural
+006,53000,3,	3,	Urban
+007,70000,5,	5,	Rural
+008,45000,1,	1,	Urban
+009,60000,4,	4,	Rural
+010,52000,3,	2,	Urban
