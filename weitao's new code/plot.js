@@ -41,6 +41,112 @@ function getPeersDataForComparison(driverData, processedData) {
     return averages; // Return averages for plotting
 }
 
+// Alston's code
+function plotDeliveriesVsHours(processedData) {
+    const ctx = document.getElementById('deliveries-hours-chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Deliveries vs Hours Worked',
+                data: processedData.map(data => ({
+                    x: data.hoursWorked,
+                    y: data.deliveriesCompleted
+                })),
+                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: { display: true, text: 'Hours Worked' },
+                    beginAtZero: true
+                },
+                y: {
+                    title: { display: true, text: 'Deliveries Completed' },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Alston's code
+function plotSalaryDistribution(processedData) {
+    const ctx = document.getElementById('salary-distribution-chart').getContext('2d');
+    const salaries = processedData.map(data => data.weeklySalary);
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['<1000', '1000-2000', '2000-3000', '>3000'],
+            datasets: [{
+                label: 'Number of Drivers',
+                data: [
+                    salaries.filter(salary => salary < 1000).length,
+                    salaries.filter(salary => salary >= 1000 && salary < 2000).length,
+                    salaries.filter(salary => salary >= 2000 && salary < 3000).length,
+                    salaries.filter(salary => salary > 3000).length,
+                ],
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Drivers'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Weekly Salary Ranges'
+                    }
+                }
+            }
+        }
+    });
+}
+
+//Alston's code
+function plotTrafficImpactOnSpeed(processedData) {
+    const ctx = document.getElementById('traffic-speed-chart').getContext('2d');
+    const trafficLevels = ['Low', 'Medium', 'High'];
+    const speedData = trafficLevels.map(level => {
+        return {
+            label: level,
+            data: processedData.filter(data => data.trafficLevel === level).map(data => data.averageSpeed),
+            backgroundColor: trafficLevels.indexOf(level) === 0 ? '#007bff' : (trafficLevels.indexOf(level) === 1 ? '#ffc107' : '#dc3545'),
+        };
+    });
+
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: processedData.map(data => `Driver ${data.driverNumber}`),
+            datasets: speedData
+        },
+        options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Average Speed (mph)'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+}
+
+
 // Function to plot graphs for a selected driver
 function plotGraphsForDriver(driverData, averages, peerAverages) {
     console.log("peer avg: ", peerAverages)
@@ -301,6 +407,7 @@ fetch('data_v2.csv')
                 const peerAverages = getPeersDataForComparison(selectedDriverData, processedData);
                 console.log("in select driver data: ", peerAverages)
                 plotGraphsForDriver(selectedDriverData, averages, peerAverages);
+                plotDeliveriesVsHours(processedData);  // 新添加的函数
             }
         });
 
