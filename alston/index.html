@@ -4,174 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Records of Maintenance Costs</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: 95%;
-            max-width: 1200px;
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: #333;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            background-color: #fff;
-        }
-
-        th {
-            background-color: #f7f7f7;
-            cursor: pointer;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            margin-top: 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .footer {
-            text-align: center;
-            font-style: italic;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <h2>Records of Truck Maintenance Costs</h2>
+        <div>Type of Truck: <span>Semi-Trailer Truck</span></div>
+        <div>Driver's Name: <span>John Doe</span></div>
+        <input type="text" id="searchInput" placeholder="Search by any column...">
 
-<div class="container">
-    <h2>Records of Truck Maintenance Costs</h2>
-    <div>Type of Truck: <span>Semi-Trailer Truck</span></div>
-    <div>Driver's Name: <span>John Doe</span></div>
+        <table id="maintenanceRecordsTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">🧰 Service Date</th>
+                    <th onclick="sortTable(1)">⚙️ Cost of Parts</th>
+                    <th onclick="sortTable(2)">👷 Labor Cost</th>
+                    <th onclick="sortTable(3)">💰 Total Service Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be populated here by JavaScript -->
+            </tbody>
+        </table>
 
-    <input type="text" id="searchInput" placeholder="Search by any column...">
-
-    <table id="maintenanceRecordsTable">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">🧰 Service Date</th>
-                <th onclick="sortTable(1)">⚙️ Cost of Parts</th>
-                <th onclick="sortTable(2)">👷 Labor Cost</th>
-                <th onclick="sortTable(3)">💰 Total Service Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be populated here by JavaScript -->
-        </tbody>
-    </table>
-
-    <div class="footer">
-       🚚 Schneider maintenance records
+        <div class="footer">
+           🚚 Schneider maintenance records
+        </div>
     </div>
-</div>
-
-<script>
-    window.addEventListener('load', () => {
-        fetch('maintenance_records.csv')
-            .then(response => response.text())
-            .then(csv => parseCSV(csv))
-            .catch(error => console.error('Error loading the CSV file:', error));
-    });
-
-    function parseCSV(csvData) {
-        const rows = csvData.split('\n');
-        const table = document.getElementById('maintenanceRecordsTable').getElementsByTagName('tbody')[0];
-
-        for (let i = 1; i < rows.length; i++) {
-            if (rows[i].trim() === '') continue;
-            const cells = rows[i].split(',');
-
-            let row = table.insertRow();
-            for (let j = 0; j < cells.length; j++) {
-                let cell = row.insertCell();
-                cell.textContent = cells[j].trim();
-            }
-        }
-    }
-
-    function sortTable(n) {
-        let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("maintenanceRecordsTable");
-        switching = true;
-        // Set the sorting direction to ascending:
-        dir = "asc";
-        while (switching) {
-            switching = false;
-            rows = table.getElementsByTagName("TR");
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount++;
-            } else {
-                if (switchcount == 0 && dir == "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
-            }
-        }
-    }
-
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-        let filter, table, tr, td, i, txtValue;
-        filter = this.value.toUpperCase();
-        table = document.getElementById("maintenanceRecordsTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 1; i < tr.length; i++) {
-            let tds = tr[i].getElementsByTagName("td");
-            tr[i].style.display = "none";  // Hide the row initially.
-            for (let j = 0; j < tds.length; j++) {
-                td = tds[j];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                        break;
-                    }
-                }
-            }
-        }
-    });
-</script>
+    <script src="scripts.js"></script>
 </body>
 </html>
