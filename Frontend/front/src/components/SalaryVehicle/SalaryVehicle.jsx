@@ -17,10 +17,9 @@ const SalaryVehicle = () => {
       const decoder = new TextDecoder('utf-8');
       const csv = decoder.decode(result.value); // the csv text
 
-      console.log("CSV data:", csv);
       const parsedData = Papa.parse(csv, { header: true, dynamicTyping: true }).data;
-      // Clean up the data by trimming whitespace from keys and values
-    const cleanedData = parsedData.map(driver => {
+
+      const cleanedData = parsedData.map(driver => {
     const cleanedDriver = {};
     Object.keys(driver).forEach(key => {
       const trimmedKey = key.trim(); // Remove whitespace from keys
@@ -30,7 +29,6 @@ const SalaryVehicle = () => {
   });
   
   setDriverData(cleanedData);
-    //   setDriverData(parsedData);
     }
 
     fetchData();
@@ -56,7 +54,7 @@ const SalaryVehicle = () => {
   ] : [];
 
   const handleSearch = () => {
-    console.log("Searching for driver ID:", searchID);
+   
     
     // Trim the search ID and ensure it's a string
     const trimmedSearchID = searchID.trim();
@@ -65,7 +63,7 @@ const SalaryVehicle = () => {
   
     if (driver) {
       // If the driver is found, log the info and set the driverInfo state
-      console.log("Found driver:", driver);
+     
   
       // Prepare the driver info, ensuring all data is treated as strings
       const driverInfo = {
@@ -78,7 +76,6 @@ const SalaryVehicle = () => {
   
       setDriverInfo(driverInfo);
     } else {
-      console.log("Driver not found");
       setDriverInfo('Driver not found');
     }
   };
