@@ -4,6 +4,23 @@ const hoverBorderWidth = 8;
 const originalBorderColor = '#343a40'; // Dark gray for contrast
 const hoverBorderColor = '#ffdc00'; // Bright yellow for hover
 
+
+function createCanvas(canvasId, width = 60, height = 40) {
+    const plotsSection = document.getElementById('plots');
+    const existingCanvas = document.getElementById(canvasId);
+    if (existingCanvas) {
+        plotsSection.removeChild(existingCanvas);
+    }
+    const canvas = document.createElement('canvas');
+    canvas.id = canvasId;
+    canvas.width = width;
+    canvas.height = height;
+    plotsSection.appendChild(canvas);
+    return canvas.getContext('2d');
+}
+
+
+
 function getPeersDataForComparison(driverData, processedData) {
     console.log("driver: ", driverData)
     console.log("processed: ", processedData)
@@ -41,9 +58,8 @@ function getPeersDataForComparison(driverData, processedData) {
     return averages; // Return averages for plotting
 }
 
-// Alston's code
 function plotDeliveriesVsHours(processedData) {
-    const ctx = document.getElementById('deliveries-hours-chart').getContext('2d');
+    const ctx = createCanvas('deliveries-hours-chart', 600, 400);
     new Chart(ctx, {
         type: 'scatter',
         data: {
@@ -71,11 +87,10 @@ function plotDeliveriesVsHours(processedData) {
     });
 }
 
-// Alston's code
 function plotSalaryDistribution(processedData) {
-    const ctx = document.getElementById('salary-distribution-chart').getContext('2d');
+    const ctx = createCanvas('salary-distribution-chart', 600, 400);
     const salaries = processedData.map(data => data.weeklySalary);
-    const chart = new Chart(ctx, {
+    new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['<1000', '1000-2000', '2000-3000', '>3000'],
@@ -110,9 +125,9 @@ function plotSalaryDistribution(processedData) {
     });
 }
 
-//Alston's code
+
 function plotTrafficImpactOnSpeed(processedData) {
-    const ctx = document.getElementById('traffic-speed-chart').getContext('2d');
+    const ctx = createCanvas('traffic-speed-chart', 600, 400);
     const trafficLevels = ['Low', 'Medium', 'High'];
     const speedData = trafficLevels.map(level => {
         return {
@@ -122,7 +137,7 @@ function plotTrafficImpactOnSpeed(processedData) {
         };
     });
 
-    const chart = new Chart(ctx, {
+    new Chart(ctx, {
         type: 'line',
         data: {
             labels: processedData.map(data => `Driver ${data.driverNumber}`),
@@ -145,6 +160,113 @@ function plotTrafficImpactOnSpeed(processedData) {
         }
     });
 }
+
+
+
+// Alston's code
+// function plotDeliveriesVsHours(processedData) {
+//     const ctx = document.getElementById('deliveries-hours-chart').getContext('2d');
+//     new Chart(ctx, {
+//         type: 'scatter',
+//         data: {
+//             datasets: [{
+//                 label: 'Deliveries vs Hours Worked',
+//                 data: processedData.map(data => ({
+//                     x: data.hoursWorked,
+//                     y: data.deliveriesCompleted
+//                 })),
+//                 backgroundColor: 'rgba(255, 99, 132, 0.6)'
+//             }]
+//         },
+//         options: {
+//             scales: {
+//                 x: {
+//                     title: { display: true, text: 'Hours Worked' },
+//                     beginAtZero: true
+//                 },
+//                 y: {
+//                     title: { display: true, text: 'Deliveries Completed' },
+//                     beginAtZero: true
+//                 }
+//             }
+//         }
+//     });
+// }
+
+// // Alston's code
+// function plotSalaryDistribution(processedData) {
+//     const ctx = document.getElementById('salary-distribution-chart').getContext('2d');
+//     const salaries = processedData.map(data => data.weeklySalary);
+//     const chart = new Chart(ctx, {
+//         type: 'bar',
+//         data: {
+//             labels: ['<1000', '1000-2000', '2000-3000', '>3000'],
+//             datasets: [{
+//                 label: 'Number of Drivers',
+//                 data: [
+//                     salaries.filter(salary => salary < 1000).length,
+//                     salaries.filter(salary => salary >= 1000 && salary < 2000).length,
+//                     salaries.filter(salary => salary >= 2000 && salary < 3000).length,
+//                     salaries.filter(salary => salary > 3000).length,
+//                 ],
+//                 backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+//             }]
+//         },
+//         options: {
+//             scales: {
+//                 y: {
+//                     beginAtZero: true,
+//                     title: {
+//                         display: true,
+//                         text: 'Number of Drivers'
+//                     }
+//                 },
+//                 x: {
+//                     title: {
+//                         display: true,
+//                         text: 'Weekly Salary Ranges'
+//                     }
+//                 }
+//             }
+//         }
+//     });
+// }
+
+// //Alston's code
+// function plotTrafficImpactOnSpeed(processedData) {
+//     const ctx = document.getElementById('traffic-speed-chart').getContext('2d');
+//     const trafficLevels = ['Low', 'Medium', 'High'];
+//     const speedData = trafficLevels.map(level => {
+//         return {
+//             label: level,
+//             data: processedData.filter(data => data.trafficLevel === level).map(data => data.averageSpeed),
+//             backgroundColor: trafficLevels.indexOf(level) === 0 ? '#007bff' : (trafficLevels.indexOf(level) === 1 ? '#ffc107' : '#dc3545'),
+//         };
+//     });
+
+//     const chart = new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//             labels: processedData.map(data => `Driver ${data.driverNumber}`),
+//             datasets: speedData
+//         },
+//         options: {
+//             scales: {
+//                 y: {
+//                     title: {
+//                         display: true,
+//                         text: 'Average Speed (mph)'
+//                     }
+//                 }
+//             },
+//             plugins: {
+//                 legend: {
+//                     display: true
+//                 }
+//             }
+//         }
+//     });
+// }
 
 
 // Function to plot graphs for a selected driver
@@ -407,7 +529,10 @@ fetch('data_v2.csv')
                 const peerAverages = getPeersDataForComparison(selectedDriverData, processedData);
                 console.log("in select driver data: ", peerAverages)
                 plotGraphsForDriver(selectedDriverData, averages, peerAverages);
-                plotDeliveriesVsHours(processedData);  // 新添加的函数
+
+                plotDeliveriesVsHours(selectedDriverData);  // Call function with selected driver data
+                plotSalaryDistribution(selectedDriverData);  // Similar update needed
+                plotTrafficImpactOnSpeed(selectedDriverData);  // Similar update needed
             }
         });
 
