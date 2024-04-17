@@ -1,0 +1,23 @@
+/* Resets the margin and padding for html and body to ensure the animation fits well */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sets the background of the body, with a radial gradient from dark purple at the center to a slightly different shade at the edges */
+body {
+    background-color: #31102F;
+    /* This color might be a fallback or originally intended alternative. */
+    background: radial-gradient(ellipse at center, rgba(49, 16, 47, 1) 0%, rgba(40, 11, 41, 1) 100%);
+}
+
+/* Styles for the canvas element where the animation is rendered */
+#stars {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Note: the duplicate property for height with 16rem is removed, keeping 100vh which likely is intended for a full viewport height */
+    z-index: 1;
+}

@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "less": "^4.2.0"
   }
 }
