@@ -1,14 +1,14 @@
-import React from 'react';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
+  ArcElement,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
-  ArcElement,
 } from 'chart.js';
+import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import rawData from './data.json';
 
@@ -24,7 +24,6 @@ ChartJS.register(
 );
 
 // Your other imports and the rest of your component code...
-
 
 const PieChartComponent = () => {
   // Calculate the total driving and waiting times
@@ -55,7 +54,12 @@ const PieChartComponent = () => {
     maintainAspectRatio: false,
   };
 
-  return <Pie data={chartData} options={options} />;
+  // Wrap the Pie component with a div and apply the class
+  return (
+    <div className="chart-container">
+      <Pie data={chartData} options={options} />
+    </div>
+  );
 };
 
 export default PieChartComponent;
