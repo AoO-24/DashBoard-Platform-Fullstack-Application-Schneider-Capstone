@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records of Maintenance Costs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Records of Truck Maintenance Costs</h2>
+        <div>Type of Truck: <span>Semi-Trailer Truck</span></div>
+        <div>Driver's Name: <span>John Doe</span></div>
+        <input type="text" id="searchInput" placeholder="Search by any column...">
+
+        <table id="maintenanceRecordsTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">🧰 Service Date</th>
+                    <th onclick="sortTable(1)">⚙️ Cost of Parts</th>
+                    <th onclick="sortTable(2)">👷 Labor Cost</th>
+                    <th onclick="sortTable(3)">💰 Total Service Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be populated here by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="footer">
+           🚚 Schneider maintenance records
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
