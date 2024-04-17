@@ -1,0 +1,9 @@
+[
+  {"day": "Monday", "driving": 6, "waiting": 2},
+  {"day": "Tuesday", "driving": 7, "waiting": 1},
+  {"day": "Wednesday", "driving": 5, "waiting": 3},
+  {"day": "Thursday", "driving": 8, "waiting": 2},
+  {"day": "Friday", "driving": 7, "waiting": 1},
+  {"day": "Saturday", "driving": 4, "waiting": 4},
+  {"day": "Sunday", "driving": 5, "waiting": 3}
+]
