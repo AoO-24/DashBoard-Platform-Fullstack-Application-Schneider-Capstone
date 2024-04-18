@@ -16,7 +16,7 @@ function SummaryComponent({ data }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: tailwindConfig().theme.colors.green[500], fontWeight: 'bold' }}>
-                ${formattedSalary} Average Salary
+                {formattedSalary} Average Salary
             </span>
             <span style={{ color: tailwindConfig().theme.colors.blue[500], fontWeight: 'bold' }}>
                 {formattedHours} hrs Average Work Hours
