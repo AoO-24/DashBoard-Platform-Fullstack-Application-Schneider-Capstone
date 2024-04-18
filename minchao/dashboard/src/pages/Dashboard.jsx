@@ -11,6 +11,7 @@ import DashboardCard09 from '../partials/dashboard/DashboardCard09';
 import DashboardCard11 from '../partials/dashboard/DashboardCard11';
 import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
+import DashboardCardTruckDriverSalary from '../partials/dashboard/DashboardCardTruckDriverSalary';
 
 function Dashboard() {
 
@@ -37,8 +38,10 @@ function Dashboard() {
 
             {/* Cards */}
             <div className="grid grid-cols-12 gap-6">
-              {/* Bar chart (Direct vs Indirect) */}
-              <DashboardCard04 />
+
+
+              {/* Bar chart (Truck Driver Salary Stats) */}
+              <DashboardCardTruckDriverSalary />
               {/* Line chart (Real Time Value) */}
               <DashboardCard05 />
               {/* Doughnut chart (Top Countries) */}
@@ -55,7 +58,7 @@ function Dashboard() {
               <DashboardCard12 />
               {/* Card (Income/Expenses) */}
               <DashboardCard13 />
-              
+
             </div>
 
           </div>
