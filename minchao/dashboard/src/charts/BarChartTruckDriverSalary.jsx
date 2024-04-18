@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useThemeProvider } from '../utils/ThemeContext';
 import {
     Chart, BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend, LineController, LineElement,
@@ -15,14 +15,8 @@ Chart.register(
     LinearScale, TimeScale, Tooltip, Legend, CategoryScale, PointElement
 );
 
-
-function BarChartTruckDriverSalary({
-    data,
-    width,
-    height
-}) {
+function BarChartTruckDriverSalary({ data, width, height }) {
     const canvas = useRef(null);
-    const summaryRef = useRef(null); // Referencing the summary element
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
     const { textColor, gridColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors;
@@ -31,24 +25,33 @@ function BarChartTruckDriverSalary({
         const ctx = canvas.current;
 
         const newChart = new Chart(ctx, {
-            type: 'bar', // Default type for the chart
+            type: 'bar',
             data: {
                 labels: data.labels,
                 datasets: [{
                     label: 'Average Salary',
                     data: data.datasets[0].data,
-                    backgroundColor: tailwindConfig().theme.colors.green[400],
+                    backgroundColor: darkMode ? tailwindConfig().theme.colors.green[400] : tailwindConfig().theme.colors.green[500],
+                    hoverBackgroundColor: darkMode ? tailwindConfig().theme.colors.green[300] : tailwindConfig().theme.colors.green[600],
                     yAxisID: 'y-salary',
-                    order: 2 // Lower order draws it behind the line chart
+                    order: 2,
+                    barPercentage: 0.6,
+                    borderRadius: 4,
                 }, {
                     label: 'Average Work Hours',
                     data: data.datasets[1].data,
-                    type: 'line', // Specify type directly in the dataset
-                    borderColor: tailwindConfig().theme.colors.blue[500],
-                    backgroundColor: 'rgba(0, 0, 0, 0)', // Make line chart area transparent
+                    type: 'line',
+                    borderColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
                     fill: false,
                     yAxisID: 'y-hours',
-                    order: 1 // Higher order draws it in front
+                    order: 1,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 6,
                 }]
             },
             options: {
@@ -58,23 +61,33 @@ function BarChartTruckDriverSalary({
                         display: true,
                         position: 'left',
                         ticks: {
-                            callback: (value) => formatValue(value) + '$',
+                            callback: (value) => formatValue(value),
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
                         },
                         grid: {
                             display: true,
                             color: darkMode ? gridColor.dark : gridColor.light,
+                            drawBorder: false,
+                            borderDash: [4, 4],
                         }
                     },
                     'y-hours': {
                         type: 'linear',
                         display: true,
                         position: 'right',
-                        // Manually setting the scale range
-                        min: 50, // Minimum value for the work hours scale
-                        max: 80, // Maximum value for the work hours scale
+                        min: 50,
+                        max: 80,
                         ticks: {
-                            // Include 'hrs' in the tick labels for clarity
                             callback: (value) => `${value} hrs`,
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
                         },
                         grid: {
                             display: false,
@@ -94,6 +107,10 @@ function BarChartTruckDriverSalary({
                         },
                         ticks: {
                             color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
                         },
                     },
                 },
@@ -116,21 +133,47 @@ function BarChartTruckDriverSalary({
                         bodyColor: darkMode ? tooltipBodyColor.dark : tooltipBodyColor.light,
                         backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,
                         borderColor: darkMode ? tooltipBorderColor.dark : tooltipBorderColor.light,
-                        borderWidth: 1
+                        borderWidth: 1,
+                        titleColor: darkMode ? textColor.dark : textColor.light,
+                        titleFont: {
+                            size: 14,
+                            weight: 'bold',
+                        },
+                        bodyFont: {
+                            size: 12,
+                        },
+                        padding: 10,
+                        displayColors: false,
                     },
                     legend: {
-                        display: false,
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 20,
+                            usePointStyle: true,
+                        },
                     },
                 },
                 responsive: true,
                 maintainAspectRatio: false,
                 animation: {
                     duration: 500,
+                    easing: 'easeInOutQuart',
+                },
+                layout: {
+                    padding: {
+                        top: 20,
+                        bottom: 20,
+                        left: 20,
+                        right: 20,
+                    },
                 },
             },
         });
-
-
 
         return () => {
             newChart.destroy();
@@ -138,12 +181,9 @@ function BarChartTruckDriverSalary({
     }, [currentTheme, darkMode, data]);
 
     return (
-        <React.Fragment>
-            <div className="px-5 py-3">
-                <div ref={summaryRef}></div> {/* Summary element */}
-                <canvas ref={canvas} width={width} height={height}></canvas>
-            </div>
-        </React.Fragment>
+        <div className="px-5 py-3">
+            <canvas ref={canvas} width={width} height={height}></canvas>
+        </div>
     );
 }
 
