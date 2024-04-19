@@ -12,6 +12,7 @@ import './charts/ChartjsConfig';
 // Import pages
 import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
+import Comparison from './pages/Comparison';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
         <Route exact path="/dashboard/analytics" element={<Analytics />} />
+        <Route exact path="/dashboard/comparison" element={<Comparison />} />
 
       </Routes>
     </>
