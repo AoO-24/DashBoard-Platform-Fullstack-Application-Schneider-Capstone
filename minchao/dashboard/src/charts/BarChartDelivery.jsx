@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 import 'chartjs-adapter-moment';
+import { formatValue } from '../utils/Utils';
 
 function BarChartDelivery({ data, width, height }) {
     const canvasRef = useRef(null);
@@ -23,32 +24,66 @@ function BarChartDelivery({ data, width, height }) {
                                 size: 14,
                                 weight: 'bold',
                             },
+                            color: '#4b5563',
                         },
                         ticks: {
                             callback: function (value) {
                                 return value + '%';
                             },
+                            color: '#4b5563',
+                            font: {
+                                size: 12,
+                            },
+                        },
+                        grid: {
+                            color: '#e5e7eb',
+                            borderDash: [3, 3],
+                            drawBorder: false,
+                            drawTicks: false,
                         },
                     },
-                    'y-efficiency': {
+                    'y-breakage': {
                         type: 'linear',
                         display: true,
                         position: 'right',
                         title: {
                             display: true,
-                            text: 'Fuel Efficiency (L/100 km)',
+                            text: 'Breakage Rate (%)',
                             font: {
                                 size: 14,
                                 weight: 'bold',
                             },
+                            color: '#4b5563',
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                return value + '%';
+                            },
+                            color: '#4b5563',
+                            font: {
+                                size: 12,
+                            },
                         },
                         grid: {
                             drawOnChartArea: false,
+                            color: '#e5e7eb',
+                            borderDash: [3, 3],
+                            drawBorder: false,
+                            drawTicks: false,
                         },
                     },
                     x: {
                         grid: {
                             display: false,
+                            drawBorder: false,
+                            drawTicks: false,
+                        },
+                        ticks: {
+                            color: '#4b5563',
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
                         },
                     },
                 },
@@ -62,6 +97,7 @@ function BarChartDelivery({ data, width, height }) {
                             font: {
                                 size: 12,
                             },
+                            color: '#4b5563',
                         },
                     },
                     tooltip: {
@@ -69,16 +105,30 @@ function BarChartDelivery({ data, width, height }) {
                         intersect: false,
                         callbacks: {
                             label: function (tooltipItem) {
-                                return `${tooltipItem.dataset.label}: ${formatValue(tooltipItem.raw)}`;
+                                return `${tooltipItem.dataset.label}: ${formatValue(tooltipItem.raw, 'percent')}`;
                             },
                         },
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        titleColor: '#1f2937',
+                        bodyColor: '#4b5563',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        padding: 10,
+                        displayColors: false,
                     },
                 },
                 elements: {
                     bar: {
-                        borderWidth: 1,
+                        borderWidth: 0,
                         borderRadius: 4,
                         borderSkipped: false,
+                    },
+                    line: {
+                        borderWidth: 3,
+                        tension: 0.4,
+                        borderCapStyle: 'round',
+                        borderJoinStyle: 'round',
+                        pointRadius: 0,
                     },
                 },
                 layout: {
