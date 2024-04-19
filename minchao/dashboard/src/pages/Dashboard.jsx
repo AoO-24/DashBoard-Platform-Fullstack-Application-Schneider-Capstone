@@ -13,6 +13,8 @@ import DashboardCard12 from '../partials/dashboard/DashboardCard12';
 import DashboardCard13 from '../partials/dashboard/DashboardCard13';
 import DashboardCardTruckDriverSalary from '../partials/dashboard/DashboardCardTruckDriverSalary';
 import DashboardCardDelivery from '../partials/dashboard/DashboardCardDelivery';
+import DashboardCardSafetyRecords from '../partials/dashboard/DashboardCardSafetyRecords';
+import DashboardCardLoadTypes from '../partials/dashboard/DashboardCardLoadTypes';
 
 function Dashboard() {
 
@@ -41,20 +43,21 @@ function Dashboard() {
             <div className="grid grid-cols-12 gap-6">
               {/* Bar chart (Truck Driver Salary Stats) */}
               <DashboardCardTruckDriverSalary />
-              {/* Line chart (Real Time Value) */}
-              <DashboardCard05 />
-              {/* Doughnut chart (Top Countries) */}
-              <DashboardCard06 />
+              {/* Card (Recent Activity) */}
+              <DashboardCardSafetyRecords />
+              {/* Doughnut chart (Load Types) */}
+              <DashboardCardLoadTypes />
               {/* Delivery VS. Customer Satisfaction */}
               <DashboardCardDelivery />
               {/* Line chart (Sales Over Time) */}
               <DashboardCard08 />
+              {/* Line chart (Real Time Value) */}
+              <DashboardCard05 />
               {/* Stacked bar chart (Sales VS Refunds) */}
               <DashboardCard09 />
               {/* Card (Reasons for Refunds) */}
               <DashboardCard11 />
-              {/* Card (Recent Activity) */}
-              <DashboardCard12 />
+
               {/* Card (Income/Expenses) */}
               <DashboardCard13 />
 
