@@ -155,6 +155,7 @@ function BarChartTruckDriverSalary({ data, width, height }) {
                             },
                             padding: 20,
                             usePointStyle: true,
+                            color: '#4b5563',
                         },
                     },
                 },

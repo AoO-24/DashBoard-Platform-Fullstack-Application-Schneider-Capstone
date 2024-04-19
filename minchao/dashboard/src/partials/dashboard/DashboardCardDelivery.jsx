@@ -14,7 +14,7 @@ function SummaryComponent({ data }) {
             <span style={{ color: tailwindConfig().theme.colors.green[500], fontWeight: 'bold' }}>
                 {formattedSat} Average Customer Satisfaction
             </span>
-            <span style={{ color: tailwindConfig().theme.colors.blue[500], fontWeight: 'bold' }}>
+            <span style={{ color: tailwindConfig().theme.colors.orange[500], fontWeight: 'bold' }}>
                 {formattedbreakageRate} Average Breakage Rate
             </span>
         </div>

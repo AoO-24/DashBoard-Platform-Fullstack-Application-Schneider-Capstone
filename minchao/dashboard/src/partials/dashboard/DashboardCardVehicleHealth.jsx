@@ -2,6 +2,23 @@ import React from 'react';
 import VehicleHealthChart from '../../charts/VehicleHealthChart';
 import { tailwindConfig } from '../../utils/Utils';
 
+function SummaryComponent({ data }) {
+    const maintenanceAvg = data.datasets[0].data.reduce((a, b) => a + b, 0) / data.datasets[0].data.length;
+    const repairsAvg = data.datasets[1].data.reduce((a, b) => a + b, 0) / data.datasets[1].data.length;
+
+    return (
+        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
+            <span style={{ color: tailwindConfig().theme.colors.blue[500], fontWeight: 'bold' }}>
+                {maintenanceAvg.toFixed(0)} Average Maintenance
+            </span>
+            <span style={{ color: tailwindConfig().theme.colors.red[500], fontWeight: 'bold' }}>
+                {repairsAvg.toFixed(0)} Average Repairs
+            </span>
+        </div>
+    );
+}
+
+
 function DashboardCardVehicleHealth() {
     const chartData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -41,6 +58,7 @@ function DashboardCardVehicleHealth() {
                 <h2 className="font-semibold text-slate-800 dark:text-slate-100">Vehicle Maintenance and Repair Log</h2>
             </header>
             <div className="px-5 py-3">
+                <SummaryComponent data={chartData} />
                 <VehicleHealthChart data={chartData} width={600} height={350} />
             </div>
         </div>
