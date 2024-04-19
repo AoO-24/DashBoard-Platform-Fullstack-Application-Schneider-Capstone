@@ -15,6 +15,12 @@ import DashboardCardTruckDriverSalary from '../partials/dashboard/DashboardCardT
 import DashboardCardDelivery from '../partials/dashboard/DashboardCardDelivery';
 import DashboardCardSafetyRecords from '../partials/dashboard/DashboardCardSafetyRecords';
 import DashboardCardLoadTypes from '../partials/dashboard/DashboardCardLoadTypes';
+import DashboardCardWorkHours from '../partials/dashboard/DashboardCardWorkHours';
+import DashboardCardFuelConsumption from '../partials/dashboard/DashboardCardFuelConsumption';
+import DashboardCardVehicleHealth from '../partials/dashboard/DashboardCardVehicleHealth';
+import DashboardCardTimeAdherence from '../partials/dashboard/DashboardCardTimeAdherence';
+import DashboardCardDriverImprovement from '../partials/dashboard/DashboardCardDriverImprovement';
+
 
 function Dashboard() {
 
@@ -47,19 +53,19 @@ function Dashboard() {
               <DashboardCardSafetyRecords />
               {/* Doughnut chart (Load Types) */}
               <DashboardCardLoadTypes />
+              {/* work and non-work hours */}
+              <DashboardCardWorkHours />
               {/* Delivery VS. Customer Satisfaction */}
               <DashboardCardDelivery />
-              {/* Line chart (Sales Over Time) */}
-              <DashboardCard08 />
-              {/* Line chart (Real Time Value) */}
-              <DashboardCard05 />
-              {/* Stacked bar chart (Sales VS Refunds) */}
-              <DashboardCard09 />
-              {/* Card (Reasons for Refunds) */}
+              {/* Fuel consumption over time */}
+              <DashboardCardFuelConsumption />
+              {/* TimeAdherence */}
+              <DashboardCardTimeAdherence />
+              {/* VehicleHealth */}
+              <DashboardCardVehicleHealth />
+              {/* Improvements */}
               <DashboardCard11 />
 
-              {/* Card (Income/Expenses) */}
-              <DashboardCard13 />
 
             </div>
 

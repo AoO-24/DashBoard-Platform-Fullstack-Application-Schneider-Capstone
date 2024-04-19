@@ -18,7 +18,7 @@ function DashboardCardLoadTypes() {
                     tailwindConfig().theme.colors.green[500],
                     tailwindConfig().theme.colors.blue[500]
                 ],
-                borderWidth: 2,
+                borderWidth: 0.5,
                 borderColor: tailwindConfig().theme.colors.slate[800],
             }
         ]
