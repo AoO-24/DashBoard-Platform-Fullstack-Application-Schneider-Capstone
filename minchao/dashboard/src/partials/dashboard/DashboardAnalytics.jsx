@@ -21,35 +21,75 @@ ChartJS.register(
 
 function DashboardAnalytics() {
   const data = {
-    labels: ['Damage', 'Loss', 'Delay', 'Satisfaction'],
+    labels: ['Fuel Efficiency', 'Safety Record', 'On-Time Delivery', 'Compliance', 'Customer Feedback', 'Vehicle Maintenance'],
     datasets: [{
       label: 'Driver Performance',
-      data: [10, 5, 15, 90], 
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgb(255, 99, 132)',
-      pointBackgroundColor: 'rgb(255, 99, 132)',
+      data: [80, 95, 90, 85, 88, 92], // Example scores for each metric
+      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      borderColor: 'rgb(75, 192, 192)',
+      pointBackgroundColor: 'rgb(75, 192, 192)',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgb(255, 99, 132)'
+      pointHoverBorderColor: 'rgb(75, 192, 192)'
     }]
   };
 
   const options = {
     scales: {
       r: {
+        grid: {
+          color: 'rgba(200, 200, 200, 0.8)' // Lighter grid lines
+        },
         angleLines: {
           display: false
         },
         suggestedMin: 0,
-        suggestedMax: 100
+        suggestedMax: 100,
+        pointLabels: {
+          font: {
+            size: 16 // Change the font size here
+          },
+          // Optional: if you want to change the font color, you can add it here as well
+          color: '#444' // This will set the font color to a darker grey
+        },
+        ticks: {
+          // This will change the label font size
+          font: {
+            size: 12 // Set the size you want for the labels
+          }
+        }
       }
-    }
+    },
+    elements: {
+      line: {
+        borderWidth: 5 // Thicker lines
+      },
+      point: {
+        radius: 10 // More prominent points
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'top', // Align legend with other charts
+        labels: {
+          font: {
+            size: 14 // Adjust font size to match other charts
+          }
+        }
+      },
+      tooltip: {
+        enabled: true, // Enable tooltips
+        mode: 'index',
+        intersect: false
+      }
+    },
+    maintainAspectRatio: true // Maintain the aspect ratio
   };
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 xl:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
-      <div className="flex justify-center items-center p-5 w-full h-full">
-        <div style={{ width: '50%', height: '50%', marginLeft: '-50px' }}> {/* Adjust marginLeft to nudge the chart to the right */}
+      <div className="flex justify-center items-center w-full h-full">
+        <div style={{ width: '50%', height: 'auto' }}> {/* Adjust width and height here */}
           <Radar data={data} options={options} />
         </div>
       </div>
