@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar.jsx';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner.jsx';
 import DashboardComparison from '../partials/dashboard/DashboardComparison.jsx';
+import C_DashboardCardTruckDriverSalary from '../partials/dashboard/C_DashboardCardTruckDriverSalary.jsx';
 
 function Comparison() {
 
@@ -31,6 +32,7 @@ function Comparison() {
             <div className="flex w-full">
               <div className="ml-4 flex-grow">
                 <DashboardComparison />
+                <C_DashboardCardTruckDriverSalary />
               </div>
             </div>
           </div>
