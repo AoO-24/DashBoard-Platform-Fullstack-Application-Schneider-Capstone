@@ -54,6 +54,10 @@ function DashboardCardSafetyRecords() {
             </header>
             <SummaryComponent data={chartData} />
             <DriverSafetyRecordsChart data={chartData} width={595} height={248} />
+            <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
+                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+            </div>
+
         </div>
     );
 }

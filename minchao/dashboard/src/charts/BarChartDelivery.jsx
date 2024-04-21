@@ -3,14 +3,44 @@ import Chart from 'chart.js/auto';
 import 'chartjs-adapter-moment';
 import { formatValue } from '../utils/Utils';
 
-function BarChartDelivery({ data, width, height }) {
+function BarChartDelivery({ data, width, height, isPeer }) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
         const ctx = canvasRef.current.getContext('2d');
+        const dynamicColors = {
+            percentageBackgroundColor: isPeer ? '#93c5fd' : '#34d399',  // Light blue for peers, green for truck drivers
+            percentageHoverBackgroundColor: isPeer ? '#bfdbfe' : '#4ade80',  // Lighter blue for hover on peers
+            breakageBorderColor: isPeer ? '#c084fc' : '#f97316',  // Purple for peers, orange for truck drivers
+            breakageBackgroundColor: isPeer ? 'rgba(192, 132, 252, 0.5)' : 'rgba(249, 115, 22, 0.5)'  // Light transparent purple for peers, light transparent orange for truck drivers
+        };
+
         const barChart = new Chart(ctx, {
             type: 'bar',
-            data: data,
+            data: {
+                labels: data.labels,
+                datasets: data.datasets.map(dataset => {
+                    if (dataset.label.includes('Customer Satisfaction')) {
+                        return {
+                            ...dataset,
+                            backgroundColor: dynamicColors.percentageBackgroundColor,
+                            hoverBackgroundColor: dynamicColors.percentageHoverBackgroundColor,
+                            type: 'bar',
+                            order: 2,
+                        };
+                    } else if (dataset.label.includes('Breakage Rate')) {
+                        return {
+                            ...dataset,
+                            borderColor: dynamicColors.breakageBorderColor,
+                            backgroundColor: dynamicColors.breakageBackgroundColor,
+                            fill: false,
+                            type: 'line',
+                            order: 1,
+                        };
+                    }
+                    return dataset;
+                }),
+            },
             options: {
                 scales: {
                     'y-percentage': {

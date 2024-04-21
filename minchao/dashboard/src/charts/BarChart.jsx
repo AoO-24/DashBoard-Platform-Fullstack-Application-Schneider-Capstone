@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useThemeProvider } from '../utils/ThemeContext';
 import {
-    Chart, BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend, LineController, LineElement,
-    CategoryScale, PointElement
+    Chart, BarController, BarElement, LineController, LineElement,
+    LinearScale, CategoryScale, TimeScale, Tooltip, Legend, PointElement
 } from 'chart.js';
 import 'chartjs-adapter-moment';
 
@@ -12,58 +12,34 @@ import { tailwindConfig, formatValue } from '../utils/Utils';
 // Register necessary chart components
 Chart.register(
     BarController, BarElement, LineController, LineElement,
-    LinearScale, TimeScale, Tooltip, Legend, CategoryScale, PointElement
+    LinearScale, CategoryScale, TimeScale, Tooltip, Legend, PointElement
 );
 
-function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
+function BarChart({ data, width, height, label }) {
     const canvas = useRef(null);
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
     const { textColor, gridColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors;
 
-    // Adjusting colors for peer data
-    const accidentColor = isPeer ? tailwindConfig().theme.colors.orange : tailwindConfig().theme.colors.red;
-    const violationColor = isPeer ? tailwindConfig().theme.colors.gray : tailwindConfig().theme.colors.yellow;
-
     useEffect(() => {
-        const ctx = canvas.current;
-
+        const ctx = canvas.current.getContext('2d');
         const newChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: data.labels,
-                datasets: [{
-                    label: 'Number of Accidents',
-                    data: data.datasets[0].data,
-                    backgroundColor: darkMode ? accidentColor[400] : accidentColor[500],
-                    hoverBackgroundColor: darkMode ? accidentColor[300] : accidentColor[600],
-                    yAxisID: 'y-accidents',
-                    order: 2,
-                    barPercentage: 0.6,
-                    borderRadius: 4,
-                }, {
-                    label: 'Number of Traffic Violations',
-                    data: data.datasets[1].data,
-                    type: 'line',
-                    borderColor: darkMode ? violationColor[400] : violationColor[500],
-                    backgroundColor: 'rgba(0, 0, 0, 0)',
-                    fill: false,
-                    yAxisID: 'y-violations',
-                    order: 1,
-                    tension: 0.4,
-                    pointRadius: 4,
-                    pointBackgroundColor: darkMode ? violationColor[400] : violationColor[500],
-                    pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
-                    pointBorderWidth: 2,
-                    pointHoverRadius: 6,
-                }]
-            },
+            type: 'bar', // We set a default type but it can be overridden per dataset
+            data: data,
             options: {
                 scales: {
-                    'y-accidents': {
+                    'y-salary': {
                         type: 'linear',
                         display: true,
                         position: 'left',
+                        ticks: {
+                            callback: (value) => formatValue(value),
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
+                        },
                         grid: {
                             display: true,
                             color: darkMode ? gridColor.dark : gridColor.light,
@@ -71,10 +47,18 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
                             borderDash: [4, 4],
                         }
                     },
-                    'y-violations': {
+                    'y-hours': {
                         type: 'linear',
                         display: true,
                         position: 'right',
+                        ticks: {
+                            callback: (value) => `${value} hrs`,
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
+                        },
                         grid: {
                             display: false,
                         },
@@ -90,6 +74,13 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
                         },
                         grid: {
                             display: false,
+                        },
+                        ticks: {
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
+                            },
+                            padding: 10,
                         },
                     },
                 },
@@ -134,7 +125,6 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
                             },
                             padding: 20,
                             usePointStyle: true,
-                            color: '#4b5563',
                         },
                     },
                 },
@@ -155,16 +145,15 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
             },
         });
 
-        return () => {
-            newChart.destroy();
-        };
-    }, [currentTheme, darkMode, data]);
+        return () => newChart.destroy();
+    }, [data, currentTheme]);  // Ensure the chart re-renders when data or theme changes
 
     return (
         <div className="px-5 py-3">
+            <h3>{label}</h3>
             <canvas ref={canvas} width={width} height={height}></canvas>
         </div>
     );
 }
 
-export default DriverSafetyRecordsChart;
+export default BarChart;

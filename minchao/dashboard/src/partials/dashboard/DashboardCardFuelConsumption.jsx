@@ -2,6 +2,23 @@ import React from 'react';
 import FuelConsumptionChart from '../../charts/FuelConsumptionChart';
 import { tailwindConfig } from '../../utils/Utils';
 
+function SummaryComponent({ data, isPeer }) {
+    // Calculate average fuel consumption
+    const fuelConsumptionAvg = data.datasets[0].data.reduce((a, b) => a + b, 0) / data.datasets[0].data.length;
+    const formattedFuelConsumption = Math.round(fuelConsumptionAvg * 10) / 10;
+
+    // Define color based on whether it's peer data or not
+    const fuelColor = isPeer ? tailwindConfig().theme.colors.purple[500] : tailwindConfig().theme.colors.blue[500];
+
+    return (
+        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
+            <span style={{ color: fuelColor, fontWeight: 'bold' }}>
+                {formattedFuelConsumption} L/100km Average Fuel Consumption
+            </span>
+        </div>
+    );
+}
+
 function DashboardCardFuelConsumption() {
     const chartData = {
         labels: ['01/2020', '02/2020', '03/2020', '04/2020', '05/2020', '06/2020'],
@@ -28,7 +45,11 @@ function DashboardCardFuelConsumption() {
                 <h2 className="font-semibold text-slate-800 dark:text-slate-100">Fuel Consumption Over Time</h2>
             </header>
             <div className="px-5 py-3">
+                <SummaryComponent data={chartData} />
                 <FuelConsumptionChart data={chartData} width={600} height={350} />
+            </div>
+            <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
+                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
             </div>
         </div>
     );

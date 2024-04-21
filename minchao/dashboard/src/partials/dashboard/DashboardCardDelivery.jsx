@@ -59,6 +59,9 @@ function DashboardCardDelivery() {
             <div className="px-5 py-3">
                 <BarChartDelivery data={chartData} width={595} height={300} />
             </div>
+            <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
+                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+            </div>
         </div>
     );
 }
