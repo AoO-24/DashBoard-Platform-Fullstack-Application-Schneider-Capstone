@@ -4,6 +4,14 @@ import Sidebar from '../partials/Sidebar.jsx';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner.jsx';
 import DashboardComparison from '../partials/dashboard/DashboardComparison.jsx';
 import C_DashboardCardTruckDriverSalary from '../partials/dashboard/C_DashboardCardTruckDriverSalary.jsx';
+import DashboardCardSafetyRecords from '../partials/dashboard/C_DashboardCardSafetyRecords.jsx';
+import DashboardCardDelivery from '../partials/dashboard/C_DashboardCardDelivery.jsx';
+import DashboardCardFuelConsumption from '../partials/dashboard/C_DashboardCardFuelConsumption.jsx';
+import DashboardCardTimeAdherence from '../partials/dashboard/C_DashboardCardTimeAdherence.jsx';
+import DashboardCardLoadTypes from '../partials/dashboard/C_DashboardCardLoadTypes.jsx';
+import DashboardCardVehicleHealth from '../partials/dashboard/C_DashboardCardVehicleHealth.jsx';
+import DashboardCardWorkHours from '../partials/dashboard/C_DashboardCardWorkHours.jsx';
+
 
 function Comparison() {
 
@@ -31,8 +39,15 @@ function Comparison() {
             {/* Cards */}
             <div className="flex w-full">
               <div className="ml-4 flex-grow">
-                <DashboardComparison />
+                {/* <DashboardComparison /> */}
                 <C_DashboardCardTruckDriverSalary />
+                <DashboardCardSafetyRecords />
+                <DashboardCardLoadTypes />
+                <DashboardCardWorkHours />
+                <DashboardCardDelivery />
+                <DashboardCardFuelConsumption />
+                <DashboardCardTimeAdherence />
+                <DashboardCardVehicleHealth />
               </div>
             </div>
           </div>

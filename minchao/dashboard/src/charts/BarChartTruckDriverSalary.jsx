@@ -15,11 +15,14 @@ Chart.register(
     LinearScale, TimeScale, Tooltip, Legend, CategoryScale, PointElement
 );
 
-function BarChartTruckDriverSalary({ data, width, height }) {
+function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
     const canvas = useRef(null);
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
     const { textColor, gridColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors;
+
+    const salaryColor = isPeer ? tailwindConfig().theme.colors.purple : tailwindConfig().theme.colors.green;
+    const hoursColor = isPeer ? tailwindConfig().theme.colors.teal : tailwindConfig().theme.colors.blue;
 
     useEffect(() => {
         const ctx = canvas.current;
@@ -31,8 +34,8 @@ function BarChartTruckDriverSalary({ data, width, height }) {
                 datasets: [{
                     label: 'Average Salary',
                     data: data.datasets[0].data,
-                    backgroundColor: darkMode ? tailwindConfig().theme.colors.green[400] : tailwindConfig().theme.colors.green[500],
-                    hoverBackgroundColor: darkMode ? tailwindConfig().theme.colors.green[300] : tailwindConfig().theme.colors.green[600],
+                    backgroundColor: darkMode ? salaryColor[400] : salaryColor[500],
+                    hoverBackgroundColor: darkMode ? salaryColor[300] : salaryColor[600],
                     yAxisID: 'y-salary',
                     order: 2,
                     barPercentage: 0.6,
@@ -41,14 +44,14 @@ function BarChartTruckDriverSalary({ data, width, height }) {
                     label: 'Average Work Hours',
                     data: data.datasets[1].data,
                     type: 'line',
-                    borderColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    borderColor: darkMode ? hoursColor[400] : hoursColor[500],
                     backgroundColor: 'rgba(0, 0, 0, 0)',
                     fill: false,
                     yAxisID: 'y-hours',
                     order: 1,
                     tension: 0.4,
                     pointRadius: 4,
-                    pointBackgroundColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    pointBackgroundColor: darkMode ? hoursColor[400] : hoursColor[500],
                     pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
                     pointBorderWidth: 2,
                     pointHoverRadius: 6,

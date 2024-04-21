@@ -8,17 +8,31 @@ import { tailwindConfig } from '../utils/Utils';
 
 Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-function TimeAdherenceChart({ data, width, height }) {
+function TimeAdherenceChart({ data, width, height, isPeer }) {
     const [chart, setChart] = useState(null);
     const canvas = useRef(null);
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
 
+    const departureColor = isPeer ? tailwindConfig().theme.colors.amber : tailwindConfig().theme.colors.emerald;
+    const arrivalColor = isPeer ? tailwindConfig().theme.colors.rose : tailwindConfig().theme.colors.sky;
+
     useEffect(() => {
         const ctx = canvas.current;
         const newChart = new Chart(ctx, {
             type: 'bar',
-            data: data,
+            data: {
+                labels: data.labels,
+                datasets: data.datasets.map((dataset, i) => {
+                    return {
+                        ...dataset,
+                        backgroundColor: i === 0 ? departureColor[400] : arrivalColor[400],
+                        borderColor: i === 0 ? departureColor[700] : arrivalColor[700],
+                        pointBackgroundColor: i === 0 ? departureColor[300] : arrivalColor[300],
+                        pointBorderColor: i === 0 ? departureColor[700] : arrivalColor[700],
+                    };
+                }),
+            },
             options: {
                 scales: {
                     x: {

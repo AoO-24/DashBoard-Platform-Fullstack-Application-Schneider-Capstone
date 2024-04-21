@@ -15,7 +15,7 @@ Chart.register(
     LinearScale, TimeScale, Tooltip, Legend, CategoryScale, PointElement
 );
 
-function C_BarChartTruckDriverSalary({ data, width, height }) {
+function BarChartTruckDriverSalary({ data, width, height }) {
     const canvas = useRef(null);
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
@@ -28,69 +28,33 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
             type: 'bar',
             data: {
                 labels: data.labels,
-                datasets: [
-                    {
-                        label: 'My Average Salary',
-                        data: data.datasets[0].data,
-                        backgroundColor: darkMode ? tailwindConfig().theme.colors.green[400] : tailwindConfig().theme.colors.green[500],
-                        hoverBackgroundColor: darkMode ? tailwindConfig().theme.colors.green[300] : tailwindConfig().theme.colors.green[600],
-                        yAxisID: 'y-salary',
-                        categoryPercentage: 0.8,
-                        barPercentage: 0.8,
-                        borderRadius: 4,
-                        borderSkipped: false,
-                        order: 2,
-
-                    }, {
-                        label: 'My Average Work Hours',
-                        data: data.datasets[1].data,
-                        type: 'line',
-                        borderColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
-                        backgroundColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
-                        fill: false,
-                        yAxisID: 'y-hours',
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
-                        pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
-                        pointBorderWidth: 2,
-                        pointHoverRadius: 8,
-                        pointHoverBackgroundColor: darkMode ? tailwindConfig().theme.colors.blue[300] : tailwindConfig().theme.colors.blue[600],
-                        order: 1,
-                    },
-                    {
-                        label: 'Peer Average Salary',
-                        data: data.datasets[2].data,
-                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
-                        hoverBackgroundColor: 'rgba(255, 99, 132, 1)',
-                        yAxisID: 'y-salary',
-                        categoryPercentage: 0.8,
-                        barPercentage: 0.8,
-                        borderRadius: 4,
-                        borderSkipped: false,
-                        order: 2,
-                    }, {
-                        label: 'Peer Average Work Hours',
-                        data: data.datasets[3].data,
-                        type: 'line',
-                        borderColor: 'rgba(54, 162, 235, 0.8)',
-                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
-                        fill: false,
-                        yAxisID: 'y-hours',
-                        tension: 0.4,
-                        pointRadius: 6,
-                        pointBackgroundColor: 'rgba(54, 162, 235, 0.8)',
-                        pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
-                        pointBorderWidth: 2,
-                        pointHoverRadius: 8,
-                        pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)',
-                        order: 1,
-                    }
-                ]
+                datasets: [{
+                    label: 'Average Salary',
+                    data: data.datasets[0].data,
+                    backgroundColor: darkMode ? tailwindConfig().theme.colors.green[400] : tailwindConfig().theme.colors.green[500],
+                    hoverBackgroundColor: darkMode ? tailwindConfig().theme.colors.green[300] : tailwindConfig().theme.colors.green[600],
+                    yAxisID: 'y-salary',
+                    order: 2,
+                    barPercentage: 0.6,
+                    borderRadius: 4,
+                }, {
+                    label: 'Average Work Hours',
+                    data: data.datasets[1].data,
+                    type: 'line',
+                    borderColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                    fill: false,
+                    yAxisID: 'y-hours',
+                    order: 1,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: darkMode ? tailwindConfig().theme.colors.blue[400] : tailwindConfig().theme.colors.blue[500],
+                    pointBorderColor: darkMode ? tailwindConfig().theme.colors.slate[800] : tailwindConfig().theme.colors.white,
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 6,
+                }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
                 scales: {
                     'y-salary': {
                         type: 'linear',
@@ -103,27 +67,13 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
                                 size: 12,
                             },
                             padding: 10,
-
                         },
                         grid: {
                             display: true,
                             color: darkMode ? gridColor.dark : gridColor.light,
                             drawBorder: false,
                             borderDash: [4, 4],
-                        },
-                        title: {
-                            display: true,
-                            text: 'Salary',
-                            color: darkMode ? textColor.dark : textColor.light,
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                            },
-                            padding: {
-                                top: 10,
-                                bottom: 10,
-                            },
-                        },
+                        }
                     },
                     'y-hours': {
                         type: 'linear',
@@ -141,19 +91,6 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
                         },
                         grid: {
                             display: false,
-                        },
-                        title: {
-                            display: true,
-                            text: 'Work Hours',
-                            color: darkMode ? textColor.dark : textColor.light,
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                            },
-                            padding: {
-                                top: 10,
-                                bottom: 10,
-                            },
                         },
                     },
                     x: {
@@ -175,19 +112,6 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
                             },
                             padding: 10,
                         },
-                        title: {
-                            display: true,
-                            text: 'Month',
-                            color: darkMode ? textColor.dark : textColor.light,
-                            font: {
-                                size: 14,
-                                weight: 'bold',
-                            },
-                            padding: {
-                                top: 10,
-                                bottom: 10,
-                            },
-                        },
                     },
                 },
                 plugins: {
@@ -204,7 +128,7 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
                                     label += formatValue(context.parsed.y);
                                 }
                                 return label;
-                            },
+                            }
                         },
                         bodyColor: darkMode ? tooltipBodyColor.dark : tooltipBodyColor.light,
                         backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,
@@ -231,26 +155,12 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
                             },
                             padding: 20,
                             usePointStyle: true,
-                        },
-                    },
-                    title: {
-                        display: true,
-                        text: 'Truck Driver Salary vs Work Hours',
-                        color: darkMode ? textColor.dark : textColor.light,
-                        font: {
-                            size: 16,
-                            weight: 'bold',
-                        },
-                        padding: {
-                            top: 10,
-                            bottom: 10,
+                            color: '#4b5563',
                         },
                     },
                 },
-                interaction: {
-                    mode: 'nearest',
-                    intersect: false,
-                },
+                responsive: true,
+                maintainAspectRatio: false,
                 animation: {
                     duration: 500,
                     easing: 'easeInOutQuart',
@@ -278,4 +188,4 @@ function C_BarChartTruckDriverSalary({ data, width, height }) {
     );
 }
 
-export default C_BarChartTruckDriverSalary;
+export default BarChartTruckDriverSalary;

@@ -19,8 +19,9 @@ function SummaryComponent({ data, title }) {
 }
 
 
+
 function DashboardCardLoadTypes() {
-    const chartData = {
+    const driverData = {
         labels: ['Hazardous Materials', 'Perishable Goods', 'Oversized Loads'],
         datasets: [
             {
@@ -35,8 +36,25 @@ function DashboardCardLoadTypes() {
                     tailwindConfig().theme.colors.green[500],
                     tailwindConfig().theme.colors.blue[500]
                 ],
-                borderWidth: 0.5,
-                borderColor: tailwindConfig().theme.colors.slate[800],
+            }
+        ]
+    };
+
+    const peerData = {
+        labels: ['Hazardous Materials', 'Perishable Goods', 'Oversized Loads'],
+        datasets: [
+            {
+                data: [20, 30, 50],
+                backgroundColor: [
+                    tailwindConfig().theme.colors.orange[400],
+                    tailwindConfig().theme.colors.yellow[400],
+                    tailwindConfig().theme.colors.purple[400]
+                ],
+                hoverBackgroundColor: [
+                    tailwindConfig().theme.colors.orange[500],
+                    tailwindConfig().theme.colors.yellow[500],
+                    tailwindConfig().theme.colors.purple[500]
+                ],
             }
         ]
     };
@@ -46,12 +64,18 @@ function DashboardCardLoadTypes() {
             <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
                 <h2 className="font-semibold text-slate-800 dark:text-slate-100">Types of Loads Handled</h2>
             </header>
-            <div className="px-5 py-3">
-                <SummaryComponent data={chartData} title="Driver" />
-                <LoadTypesChart data={chartData} width={389} height={260} />
+            <div className="flex">
+                <div className="w-1/2 p-3">
+                    <SummaryComponent data={driverData} title="Driver" />
+                    <LoadTypesChart data={driverData} width={389} height={260} title="Driver" />
+                </div>
+                <div className="w-1/2 p-3">
+                    <SummaryComponent data={peerData} title="Peers" />
+                    <LoadTypesChart data={peerData} width={389} height={260} title="Peers" />
+                </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Explore diversifying load types to mitigate risks associated with market fluctuations.</p>
             </div>
         </div>
     );
