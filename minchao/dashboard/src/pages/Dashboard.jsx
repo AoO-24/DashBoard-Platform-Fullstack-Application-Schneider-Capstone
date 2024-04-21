@@ -55,20 +55,17 @@ function Dashboard() {
               <DashboardCardLoadTypes />
               {/* work and non-work hours */}
               <DashboardCardWorkHours />
-              {/* Delivery VS. Customer Satisfaction */}
-              <DashboardCardDelivery />
               {/* Fuel consumption over time */}
               <DashboardCardFuelConsumption />
+              {/* Improvements */}
+              <DashboardCard11 />
+              {/* Delivery VS. Customer Satisfaction */}
+              <DashboardCardDelivery />
               {/* TimeAdherence */}
               <DashboardCardTimeAdherence />
               {/* VehicleHealth */}
               <DashboardCardVehicleHealth />
-              {/* Improvements */}
-              <DashboardCard11 />
-
-
             </div>
-
           </div>
         </main>
       </div>
