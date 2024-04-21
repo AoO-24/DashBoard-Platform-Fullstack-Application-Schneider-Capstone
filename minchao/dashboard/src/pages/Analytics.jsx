@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner';
-import DashboardAnalytics from '../partials/dashboard/DashboardAnalytics.jsx';
+import DashboardCard11 from '../partials/dashboard/DashboardCard11';
+import DashboardCardTruckDriverSalary from '../partials/dashboard/DashboardCardTruckDriverSalary';
+import DashboardCardDelivery from '../partials/dashboard/DashboardCardDelivery';
+import DashboardCardSafetyRecords from '../partials/dashboard/DashboardCardSafetyRecords';
+import DashboardCardLoadTypes from '../partials/dashboard/DashboardCardLoadTypes';
+import DashboardCardWorkHours from '../partials/dashboard/DashboardCardWorkHours';
+import DashboardCardFuelConsumption from '../partials/dashboard/DashboardCardFuelConsumption';
+import DashboardCardVehicleHealth from '../partials/dashboard/DashboardCardVehicleHealth';
+import DashboardCardTimeAdherence from '../partials/dashboard/DashboardCardTimeAdherence';
 
 function Analytics() {
 
@@ -28,10 +36,25 @@ function Analytics() {
             </div>
 
             {/* Cards */}
-            <div className="flex w-full">
-              <div className="ml-4 flex-grow">
-                <DashboardAnalytics />
-              </div>
+            <div className="grid grid-cols-12 gap-6">
+              {/* Bar chart (Truck Driver Salary Stats) */}
+              <DashboardCardTruckDriverSalary />
+              {/* Card (Recent Activity) */}
+              <DashboardCardSafetyRecords />
+              {/* Doughnut chart (Load Types) */}
+              <DashboardCardLoadTypes />
+              {/* work and non-work hours */}
+              <DashboardCardWorkHours />
+              {/* Fuel consumption over time */}
+              <DashboardCardFuelConsumption />
+              {/* Delivery VS. Customer Satisfaction */}
+              <DashboardCardDelivery />
+              {/* TimeAdherence */}
+              <DashboardCardTimeAdherence />
+              {/* VehicleHealth */}
+              <DashboardCardVehicleHealth />
+              {/* Improvements */}
+              <DashboardCard11 />
             </div>
           </div>
         </main>

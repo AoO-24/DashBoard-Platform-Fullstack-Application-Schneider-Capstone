@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Sidebar from '../partials/Sidebar.jsx';
 import WelcomeBanner from '../partials/dashboard/WelcomeBanner.jsx';
-import DashboardComparison from '../partials/dashboard/DashboardComparison.jsx';
 import C_DashboardCardTruckDriverSalary from '../partials/dashboard/C_DashboardCardTruckDriverSalary.jsx';
 import DashboardCardSafetyRecords from '../partials/dashboard/C_DashboardCardSafetyRecords.jsx';
 import DashboardCardDelivery from '../partials/dashboard/C_DashboardCardDelivery.jsx';
