@@ -52,7 +52,7 @@ function Analytics() {
               {/* TimeAdherence */}
               <DashboardCardTimeAdherence />
               {/* VehicleHealth */}
-              <DashboardCardVehicleHealth />
+              {/* <DashboardCardVehicleHealth /> */}
               {/* Improvements */}
               <DashboardCard11 />
             </div>

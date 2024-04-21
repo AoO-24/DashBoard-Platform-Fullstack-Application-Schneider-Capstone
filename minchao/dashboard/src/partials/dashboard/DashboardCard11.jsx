@@ -10,7 +10,7 @@ function DashboardCard11() {
     labels: ['Reasons'],
     datasets: [
       {
-        label: 'Driving Adherence',
+        label: 'Decreasing Idle Hours',
         data: [131],
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
@@ -18,7 +18,7 @@ function DashboardCard11() {
         categoryPercentage: 1,
       },
       {
-        label: 'Fuel Consumption',
+        label: 'Driving Adherence',
         data: [100],
         backgroundColor: tailwindConfig().theme.colors.indigo[800],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[900],
@@ -34,7 +34,7 @@ function DashboardCard11() {
         categoryPercentage: 1,
       },
       {
-        label: 'Vehicle Maintenance',
+        label: 'Fuel Efficiency',
         data: [65],
         backgroundColor: tailwindConfig().theme.colors.green[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
@@ -43,7 +43,7 @@ function DashboardCard11() {
       },
       {
         label: 'Other',
-        data: [72],
+        data: [30],
         backgroundColor: tailwindConfig().theme.colors.slate[200],
         hoverBackgroundColor: tailwindConfig().theme.colors.slate[300],
         barPercentage: 1,

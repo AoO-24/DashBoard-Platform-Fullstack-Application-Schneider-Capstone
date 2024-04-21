@@ -29,13 +29,13 @@ function SummaryComponent({ data, isPeer }) {
 function C_DashboardCardTruckDriverSalary() {
     const truckDriverData = {
         labels: [
-            '01-01-2020', '02-01-2020', '03-01-2020',
-            '04-01-2020', '05-01-2020', '06-01-2020',
+            'Jan', 'Feb', 'Mar',
+            'Apr', 'May', 'Jun',
         ],
         datasets: [
             {
                 label: 'Average Truck Driver Salary',
-                data: [35000, 37000, 36000, 38000, 39000, 40000],
+                data: [4150 + 1500, 4050 + 1500, 3000 + 1500, 3100 + 1500, 2500 + 1500, 2900 + 1500],
                 backgroundColor: tailwindConfig().theme.colors.green[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
                 yAxisID: 'y-salary',
@@ -43,7 +43,7 @@ function C_DashboardCardTruckDriverSalary() {
             },
             {
                 label: 'Average Truck Driver Work Hours',
-                data: [70, 72, 68, 74, 76, 73],
+                data: [150, 160, 100, 120, 90, 110],
                 borderColor: tailwindConfig().theme.colors.blue[400],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 type: 'line',
@@ -60,7 +60,7 @@ function C_DashboardCardTruckDriverSalary() {
         datasets: [
             {
                 label: 'Average Peer Salary',
-                data: [32000, 34000, 33000, 35000, 36000, 37000],
+                data: [4150 + 1000, 4150 + 1000 + 300, 4150 + 1000 + 200, 4150 + 1000 + 300, 4150 + 1000 + 400, 4150 + 1000 + 100],
                 backgroundColor: tailwindConfig().theme.colors.yellow[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.yellow[500],
                 yAxisID: 'y-salary',
@@ -68,7 +68,7 @@ function C_DashboardCardTruckDriverSalary() {
             },
             {
                 label: 'Average Peer Work Hours',
-                data: [65, 67, 63, 69, 71, 68],
+                data: [150, 170, 160, 165, 175, 158],
                 borderColor: tailwindConfig().theme.colors.red[400],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 type: 'line',

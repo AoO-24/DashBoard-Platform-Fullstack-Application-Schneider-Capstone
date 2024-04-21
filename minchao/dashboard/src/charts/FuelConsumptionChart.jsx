@@ -53,9 +53,11 @@ function FuelConsumptionChart({ data, width, height, isPeer }) {
                         y: {
                             title: {
                                 display: true,
-                                text: 'Fuel Consumption (Liters per 100 km)',
+                                text: 'Fuel Consumption (MPG)',
                                 color: darkMode ? tailwindConfig().theme.colors.slate[300] : tailwindConfig().theme.colors.slate[600],
                             },
+                            min: 6.8,
+                            max: 8.0,
                             grid: {
                                 color: darkMode ? tailwindConfig().theme.colors.slate[700] : tailwindConfig().theme.colors.slate[200],
                                 borderDash: [3, 3],
@@ -71,7 +73,7 @@ function FuelConsumptionChart({ data, width, height, isPeer }) {
                             intersect: false,
                             callbacks: {
                                 label: function (context) {
-                                    return `${context.dataset.label}: ${context.parsed.y} L/100 km`;
+                                    return `${context.dataset.label}: ${context.parsed.y} MPG`;
                                 }
                             },
                             backgroundColor: darkMode ? tailwindConfig().theme.colors.slate[700] : tailwindConfig().theme.colors.white,

@@ -31,7 +31,10 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
         const newChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.labels,
+                labels: [
+                    'Jan', 'Feb', 'Mar',
+                    'Apr', 'May', 'Jun',
+                ],
                 datasets: [{
                     label: 'Number of Accidents',
                     data: data.datasets[0].data,
@@ -69,27 +72,34 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
                             color: darkMode ? gridColor.dark : gridColor.light,
                             drawBorder: false,
                             borderDash: [4, 4],
-                        }
+                        },
+                        ticks: {
+                            stepSize: 1,
+                            precision: 0,
+                        },
                     },
                     'y-violations': {
                         type: 'linear',
                         display: true,
                         position: 'right',
+                        min: 0,
+                        max: 2,
                         grid: {
                             display: false,
+                        },
+                        ticks: {
+                            stepSize: 1,
+                            precision: 0,
                         },
                     },
                     x: {
-                        type: 'time',
-                        time: {
-                            parser: 'MM-DD-YYYY',
-                            unit: 'month',
-                            displayFormats: {
-                                month: 'MMM YY',
+                        type: 'category', // Changed from 'time' to 'category'
+                        ticks: {
+                            color: darkMode ? textColor.dark : textColor.light,
+                            font: {
+                                size: 12,
                             },
-                        },
-                        grid: {
-                            display: false,
+                            padding: 10,
                         },
                     },
                 },
@@ -104,7 +114,7 @@ function DriverSafetyRecordsChart({ data, width, height, isPeer }) {
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    label += formatValue(context.parsed.y);
+                                    label += (context.parsed.y);
                                 }
                                 return label;
                             }

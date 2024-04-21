@@ -16,10 +16,10 @@ function SummaryComponent({ data }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: tailwindConfig().theme.colors.green[500], fontWeight: 'bold' }}>
-                {formattedSalary} Average Salary
+                {formattedSalary} Average Monthly Salary
             </span>
             <span style={{ color: tailwindConfig().theme.colors.blue[500], fontWeight: 'bold' }}>
-                {formattedHours} hrs Average Work Hours
+                {formattedHours} hrs Average Monthly Work Hours
             </span>
         </div>
     );
@@ -30,28 +30,28 @@ function SummaryComponent({ data }) {
 function DashboardCardTruckDriverSalary() {
     const chartData = {
         labels: [
-            '01-01-2020', '02-01-2020', '03-01-2020',
-            '04-01-2020', '05-01-2020', '06-01-2020',
+            'Jan', 'Feb', 'Mar',
+            'Apr', 'May', 'Jun',
         ],
         datasets: [
             {
                 label: 'Average Salary',
-                data: [35000, 37000, 36000, 38000, 39000, 40000],
+                data: [4150 + 1500, 4050 + 1500, 3000 + 1500, 3100 + 1500, 2500 + 1500, 2900 + 1500], // Set to approx 4655 each month
                 backgroundColor: tailwindConfig().theme.colors.green[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
                 yAxisID: 'y-salary',
                 type: 'bar', // Specify as bar chart
             },
             {
+                //hourly 28.75
                 label: 'Average Work Hours',
-                data: [70, 72, 68, 74, 76, 73],
+                data: [150, 160, 100, 120, 90, 110], // Varied hours to show instability
                 borderColor: tailwindConfig().theme.colors.blue[400],
                 backgroundColor: 'rgba(0, 0, 0, 0)', // Transparent background for line chart
                 type: 'line', // Specify as line chart
                 yAxisID: 'y-hours',
             }
         ],
-
     };
 
     return (
@@ -62,7 +62,8 @@ function DashboardCardTruckDriverSalary() {
             <SummaryComponent data={chartData} />
             <BarChartTruckDriverSalary data={chartData} width={595} height={248} />
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>
+                    Consider establishing a consistent schedule to optimize productivity and keep a healthy work-life balance</p>
             </div>
         </div>
     );

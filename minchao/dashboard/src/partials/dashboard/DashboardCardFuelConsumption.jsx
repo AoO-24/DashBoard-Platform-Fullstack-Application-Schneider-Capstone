@@ -13,7 +13,7 @@ function SummaryComponent({ data, isPeer }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: fuelColor, fontWeight: 'bold' }}>
-                {formattedFuelConsumption} L/100km Average Fuel Consumption
+                {formattedFuelConsumption} MPG Average Fuel Consumption
             </span>
         </div>
     );
@@ -21,7 +21,7 @@ function SummaryComponent({ data, isPeer }) {
 
 function DashboardCardFuelConsumption() {
     const chartData = {
-        labels: ['01/2020', '02/2020', '03/2020', '04/2020', '05/2020', '06/2020'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         datasets: [
             {
                 label: 'Fuel Consumption',
@@ -49,7 +49,7 @@ function DashboardCardFuelConsumption() {
                 <FuelConsumptionChart data={chartData} width={600} height={350} />
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Suggestion: Don't be in a hurry during the driving time, please try to keep the speed smooth to save gas.</p>
             </div>
         </div>
     );

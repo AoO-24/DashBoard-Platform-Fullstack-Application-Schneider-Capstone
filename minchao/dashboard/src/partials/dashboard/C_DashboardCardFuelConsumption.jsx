@@ -13,7 +13,7 @@ function SummaryComponent({ data, label, isPeer }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: fuelColor, fontWeight: 'bold' }}>
-                {formattedFuelConsumption} L/100km Average Fuel Consumption ({label})
+                {formattedFuelConsumption} MPG Average Fuel Consumption ({label})
             </span>
         </div>
     );
@@ -22,11 +22,11 @@ function SummaryComponent({ data, label, isPeer }) {
 
 function DashboardCardFuelConsumption() {
     const truckDriverData = {
-        labels: ['01/2020', '02/2020', '03/2020', '04/2020', '05/2020', '06/2020'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         datasets: [
             {
                 label: 'Truck Driver Fuel Consumption',
-                data: [7.8, 7.5, 7.0, 7.3, 6.8, 7.9],
+                data: [7.8, 7.5, 7.0, 7.3, 7.0, 7.9],
                 backgroundColor: tailwindConfig().theme.colors.blue[500],
                 borderColor: tailwindConfig().theme.colors.blue[700],
                 borderWidth: 2,
@@ -41,11 +41,11 @@ function DashboardCardFuelConsumption() {
     };
 
     const peerData = {
-        labels: ['01/2020', '02/2020', '03/2020', '04/2020', '05/2020', '06/2020'],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         datasets: [
             {
                 label: 'Peer Fuel Consumption',
-                data: [8.1, 8.0, 7.7, 7.9, 7.5, 8.2],
+                data: [7.1, 7.2, 7.5, 7.0, 7.2, 7.1],
                 backgroundColor: tailwindConfig().theme.colors.purple[500],
                 borderColor: tailwindConfig().theme.colors.purple[700],
                 borderWidth: 2,

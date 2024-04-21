@@ -47,8 +47,11 @@ function BarChartDelivery({ data, width, height, isPeer }) {
                         type: 'linear',
                         display: true,
                         position: 'left',
+                        min: 80,
+                        max: 100,
                         title: {
                             display: true,
+
                             text: 'Customer Satisfaction (%)',
                             font: {
                                 size: 14,
@@ -76,6 +79,8 @@ function BarChartDelivery({ data, width, height, isPeer }) {
                         type: 'linear',
                         display: true,
                         position: 'right',
+                        min: 0,
+                        max: 6,
                         title: {
                             display: true,
                             text: 'Breakage Rate (%)',
@@ -135,7 +140,7 @@ function BarChartDelivery({ data, width, height, isPeer }) {
                         intersect: false,
                         callbacks: {
                             label: function (tooltipItem) {
-                                return `${tooltipItem.dataset.label}: ${formatValue(tooltipItem.raw, 'percent')}`;
+                                return `${tooltipItem.dataset.label}: ${(tooltipItem.raw).toFixed(1)}%`;
                             },
                         },
                         backgroundColor: 'rgba(255, 255, 255, 0.9)',

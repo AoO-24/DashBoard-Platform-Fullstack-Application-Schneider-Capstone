@@ -13,15 +13,21 @@ function SummaryComponent({ data, label, isPeer }) {
     const breakageColor = isPeer ? tailwindConfig().theme.colors.purple[500] : tailwindConfig().theme.colors.orange[500];
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
-            <span style={{ color: satColor, fontWeight: 'bold' }}>
-                {formattedSat} Average Customer Satisfaction ({label})
-            </span>
-            <span style={{ color: breakageColor, fontWeight: 'bold' }}>
-                {formattedBreakageRate} Average Breakage Rate ({label})
-            </span>
+        <div style={{ display: 'flex', flexDirection: 'column', padding: '10px 0' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '5px 0' }}>
+                <span style={{ color: satColor, fontWeight: 'bold' }}>
+                    {formattedSat} Average Customer Satisfaction ({label})
+                </span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '5px 0' }}>
+                <span style={{ color: breakageColor, fontWeight: 'bold' }}>
+                    {formattedBreakageRate} Average Breakage Rate ({label})
+                </span>
+            </div>
         </div>
     );
+
+
 }
 
 function DashboardCardDelivery() {
@@ -30,7 +36,7 @@ function DashboardCardDelivery() {
         datasets: [
             {
                 label: 'Customer Satisfaction (%)',
-                data: [88, 90, 87, 93, 95, 91],
+                data: [90, 90, 87, 93, 95, 85],
                 backgroundColor: tailwindConfig().theme.colors.green[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
                 yAxisID: 'y-percentage',
@@ -38,7 +44,7 @@ function DashboardCardDelivery() {
             },
             {
                 label: 'Breakage Rate (%)',
-                data: [2, 1.5, 2.5, 1, 1.5, 2],
+                data: [3, 2.5, 3.5, 2, 2.5, 5.5],
                 borderColor: tailwindConfig().theme.colors.orange[500],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 fill: false,
@@ -52,7 +58,7 @@ function DashboardCardDelivery() {
         datasets: [
             {
                 label: 'Customer Satisfaction (%)',
-                data: [85, 87, 84, 90, 92, 88],
+                data: [95, 96, 95, 95, 95, 98],
                 backgroundColor: tailwindConfig().theme.colors.blue[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
                 yAxisID: 'y-percentage',
@@ -60,7 +66,7 @@ function DashboardCardDelivery() {
             },
             {
                 label: 'Breakage Rate (%)',
-                data: [3, 2.5, 3, 2, 2.5, 3],
+                data: [2.5, 2.0, 2.3, 2.3, 2.0, 1.8],
                 borderColor: tailwindConfig().theme.colors.purple[500],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 fill: false,

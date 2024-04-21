@@ -12,10 +12,10 @@ function SummaryComponent({ data }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: tailwindConfig().theme.colors.green[500], fontWeight: 'bold' }}>
-                {formattedSat} Average Customer Satisfaction
+                {formattedSat}% Average Customer Satisfaction
             </span>
             <span style={{ color: tailwindConfig().theme.colors.orange[500], fontWeight: 'bold' }}>
-                {formattedbreakageRate} Average Breakage Rate
+                {formattedbreakageRate}% Average Breakage Rate
             </span>
         </div>
     );
@@ -29,7 +29,7 @@ function DashboardCardDelivery() {
         datasets: [
             {
                 label: 'Customer Satisfaction (%)',
-                data: [88, 90, 87, 93, 95, 91],
+                data: [88, 90, 87, 93, 95, 85],
                 backgroundColor: tailwindConfig().theme.colors.green[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
                 yAxisID: 'y-percentage',
@@ -39,7 +39,7 @@ function DashboardCardDelivery() {
             },
             {
                 label: 'Breakage Rate (%)',
-                data: [2, 1.5, 2.5, 1, 1.5, 2],
+                data: [3, 2.5, 3.5, 2, 2.5, 5.5],
                 type: 'line',
                 borderColor: tailwindConfig().theme.colors.orange[500],
                 backgroundColor: 'rgba(0, 0, 0, 0)',

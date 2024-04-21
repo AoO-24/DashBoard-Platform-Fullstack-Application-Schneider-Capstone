@@ -14,24 +14,81 @@ function TimeAdherenceChart({ data, width, height, isPeer }) {
     const { currentTheme } = useThemeProvider();
     const darkMode = currentTheme === 'dark';
 
-    const departureColor = isPeer ? tailwindConfig().theme.colors.amber : tailwindConfig().theme.colors.emerald;
-    const arrivalColor = isPeer ? tailwindConfig().theme.colors.rose : tailwindConfig().theme.colors.sky;
+    const driverDepartureDelayColor = tailwindConfig().theme.colors.amber;
+    const driverDepartureEarlyColor = tailwindConfig().theme.colors.emerald;
+    const driverArrivalDelayColor = tailwindConfig().theme.colors.rose;
+    const driverArrivalEarlyColor = tailwindConfig().theme.colors.lime;
 
+    const peerDepartureDelayColor = tailwindConfig().theme.colors.fuchsia;
+    const peerDepartureEarlyColor = tailwindConfig().theme.colors.lightBlue;
+    const peerArrivalDelayColor = tailwindConfig().theme.colors.purple;
+    const peerArrivalEarlyColor = tailwindConfig().theme.colors.teal;
     useEffect(() => {
         const ctx = canvas.current;
         const newChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.labels,
-                datasets: data.datasets.map((dataset, i) => {
-                    return {
-                        ...dataset,
-                        backgroundColor: i === 0 ? departureColor[400] : arrivalColor[400],
-                        borderColor: i === 0 ? departureColor[700] : arrivalColor[700],
-                        pointBackgroundColor: i === 0 ? departureColor[300] : arrivalColor[300],
-                        pointBorderColor: i === 0 ? departureColor[700] : arrivalColor[700],
-                    };
-                }),
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                // datasets: data.datasets.map((dataset, i) => {
+                //     const isDelay = dataset.label.includes('Delay');
+                //     const isDeparture = dataset.label.includes('Departure');
+                //     let backgroundColor, borderColor, pointBackgroundColor, pointBorderColor;
+
+                //     if (isPeer) {
+                //         if (isDeparture && isDelay) {
+                //             backgroundColor = peerDepartureDelayColor[400];
+                //             borderColor = peerDepartureDelayColor[700];
+                //             pointBackgroundColor = peerDepartureDelayColor[300];
+                //             pointBorderColor = peerDepartureDelayColor[700];
+                //         } else if (isDeparture && !isDelay) {
+                //             backgroundColor = peerDepartureEarlyColor[400];
+                //             borderColor = peerDepartureEarlyColor[700];
+                //             pointBackgroundColor = peerDepartureEarlyColor[300];
+                //             pointBorderColor = peerDepartureEarlyColor[700];
+                //         } else if (!isDeparture && isDelay) {
+                //             backgroundColor = peerArrivalDelayColor[400];
+                //             borderColor = peerArrivalDelayColor[700];
+                //             pointBackgroundColor = peerArrivalDelayColor[300];
+                //             pointBorderColor = peerArrivalDelayColor[700];
+                //         } else {
+                //             backgroundColor = peerArrivalEarlyColor[400];
+                //             borderColor = peerArrivalEarlyColor[700];
+                //             pointBackgroundColor = peerArrivalEarlyColor[300];
+                //             pointBorderColor = peerArrivalEarlyColor[700];
+                //         }
+                //     } else {
+                //         if (isDeparture && isDelay) {
+                //             backgroundColor = driverDepartureDelayColor[400];
+                //             borderColor = driverDepartureDelayColor[700];
+                //             pointBackgroundColor = driverDepartureDelayColor[300];
+                //             pointBorderColor = driverDepartureDelayColor[700];
+                //         } else if (isDeparture && !isDelay) {
+                //             backgroundColor = driverDepartureEarlyColor[400];
+                //             borderColor = driverDepartureEarlyColor[700];
+                //             pointBackgroundColor = driverDepartureEarlyColor[300];
+                //             pointBorderColor = driverDepartureEarlyColor[700];
+                //         } else if (!isDeparture && isDelay) {
+                //             backgroundColor = driverArrivalDelayColor[400];
+                //             borderColor = driverArrivalDelayColor[700];
+                //             pointBackgroundColor = driverArrivalDelayColor[300];
+                //             pointBorderColor = driverArrivalDelayColor[700];
+                //         } else {
+                //             backgroundColor = driverArrivalEarlyColor[400];
+                //             borderColor = driverArrivalEarlyColor[700];
+                //             pointBackgroundColor = driverArrivalEarlyColor[300];
+                //             pointBorderColor = driverArrivalEarlyColor[700];
+                //         }
+                //     }
+
+                //     return {
+                //         ...dataset,
+                //         backgroundColor,
+                //         borderColor,
+                //         pointBackgroundColor,
+                //         pointBorderColor,
+                //     };
+                // }),
+                datasets: data.datasets,
             },
             options: {
                 scales: {
@@ -46,9 +103,11 @@ function TimeAdherenceChart({ data, width, height, isPeer }) {
                     },
                     y: {
                         stacked: true,
+                        min: -6,
+                        max: 10,
                         title: {
                             display: true,
-                            text: 'Time Difference (minutes)',
+                            text: 'Time Difference (hours)',
                             color: darkMode ? tailwindConfig().theme.colors.slate[300] : tailwindConfig().theme.colors.slate[600],
                         },
                         grid: {
@@ -64,6 +123,7 @@ function TimeAdherenceChart({ data, width, height, isPeer }) {
                     }
                 },
                 plugins: {
+
                     tooltip: {
                         mode: 'index',
                         intersect: false,
@@ -72,7 +132,7 @@ function TimeAdherenceChart({ data, width, height, isPeer }) {
                                 const label = context.dataset.label || '';
                                 const value = context.parsed.y || 0;
                                 const sign = value >= 0 ? '+' : '';
-                                return `${label}: ${sign}${value} min`;
+                                return `${label}: ${sign}${value} hours`;
                             },
                         },
                         backgroundColor: darkMode ? tailwindConfig().theme.colors.slate[700] : tailwindConfig().theme.colors.white,
