@@ -32,42 +32,40 @@ function DashboardCardTimeAdherence() {
         labels: ['Stop 1', 'Stop 2', 'Stop 3', 'Stop 4', 'Stop 5'],
         datasets: [
             {
-                label: 'Truck Driver Departure Delay',
-                data: [3, -1, 0, 2, -2], // hypothetical data for truck drivers
-                backgroundColor: tailwindConfig().theme.colors.green[400],
-                hoverBackgroundColor: tailwindConfig().theme.colors.green[500],
-                borderColor: tailwindConfig().theme.colors.green[700],
+                label: 'Actual Truck Driver Departure Time',
+                data: [3, -1, 0, 2, -2, 4],
+                backgroundColor: tailwindConfig().theme.colors.amber[400],
+                hoverBackgroundColor: tailwindConfig().theme.colors.amber[500],
+                borderColor: tailwindConfig().theme.colors.amber[700],
                 borderWidth: 1,
-
             },
             {
-                label: 'Truck Driver Arrival Delay',
-                data: [1, -4, 2, 0, -1], // hypothetical data for truck drivers
-                backgroundColor: tailwindConfig().theme.colors.red[400],
-                hoverBackgroundColor: tailwindConfig().theme.colors.red[500],
-                borderColor: tailwindConfig().theme.colors.red[700],
+                label: 'Actual Truck Driver Arrival Time',
+                data: [1, -4, 2, 0, -1, 5],
+                backgroundColor: tailwindConfig().theme.colors.emerald[400],
+                hoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
+                borderColor: tailwindConfig().theme.colors.emerald[700],
                 borderWidth: 1,
             }
         ]
     };
 
     const peerChartData = {
-        labels: ['Stop 1', 'Stop 2', 'Stop 3', 'Stop 4', 'Stop 5'],
         datasets: [
             {
-                label: 'Peer Departure Delay',
-                data: [4, -2, 1, 3, -1], // hypothetical data for peers
-                backgroundColor: tailwindConfig().theme.colors.indigo[400],
-                hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-                borderColor: tailwindConfig().theme.colors.indigo[700],
+                label: 'Actual Peer Departure Time',
+                data: [2, -2, 1, 1, -1, -2],
+                backgroundColor: tailwindConfig().theme.colors.rose[400],
+                hoverBackgroundColor: tailwindConfig().theme.colors.rose[500],
+                borderColor: tailwindConfig().theme.colors.rose[700],
                 borderWidth: 1,
             },
             {
-                label: 'Peer Arrival Delay',
-                data: [2, -3, 2, 1, -3], // hypothetical data for peers
-                backgroundColor: tailwindConfig().theme.colors.purple[400],
-                hoverBackgroundColor: tailwindConfig().theme.colors.purple[500],
-                borderColor: tailwindConfig().theme.colors.purple[700],
+                label: 'Actual Peer Arrival Time',
+                data: [2, -1, 2, 1, -2, -1],
+                backgroundColor: tailwindConfig().theme.colors.sky[400],
+                hoverBackgroundColor: tailwindConfig().theme.colors.sky[500],
+                borderColor: tailwindConfig().theme.colors.sky[700],
                 borderWidth: 1,
             }
         ]

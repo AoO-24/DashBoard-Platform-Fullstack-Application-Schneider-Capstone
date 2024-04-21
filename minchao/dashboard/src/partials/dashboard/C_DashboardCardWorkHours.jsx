@@ -11,7 +11,7 @@ function SummaryComponent({ data, title }) {
             {data.labels.map((label, index) => (
                 <div key={index} style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '6px 10px', borderBottom: '1px solid #ddd', marginBottom: '4px', fontSize: '14px' }}>
                     <span>{label}:</span>
-                    <span style={{ fontWeight: 'bold' }}>{formatValue(data.datasets[0].data[index])} hours</span>
+                    <span style={{ fontWeight: 'bold' }}>{(data.datasets[0].data[index])} hours</span>
                 </div>
             ))}
         </div>
@@ -22,18 +22,20 @@ function SummaryComponent({ data, title }) {
 
 function DashboardCardWorkHours() {
     const driverData = {
-        labels: ['Work Hours', 'Non-Working Hours'],
+        labels: ['Driving Hours', 'Laytime Hours', 'Idle Hours'],
         datasets: [
             {
+                data: [60, 20, 30],
                 label: 'Driver',
-                data: [160, 40],
                 backgroundColor: [
                     tailwindConfig().theme.colors.emerald[400],
                     tailwindConfig().theme.colors.slate[300],
+                    tailwindConfig().theme.colors.amber[400], // Added color for the third component
                 ],
                 hoverBackgroundColor: [
                     tailwindConfig().theme.colors.emerald[500],
                     tailwindConfig().theme.colors.slate[400],
+                    tailwindConfig().theme.colors.amber[500], // Added color for the third component
                 ],
                 borderWidth: 1,
                 borderColor: tailwindConfig().theme.colors.slate[800],
@@ -42,18 +44,20 @@ function DashboardCardWorkHours() {
     };
 
     const peerData = {
-        labels: ['Work Hours', 'Non-Working Hours'],
+        labels: ['Driving Hours', 'Laytime Hours', 'Idle Hours'],
         datasets: [
             {
                 label: 'Peers',
-                data: [140, 60],
+                data: [98, 29, 31],
                 backgroundColor: [
-                    tailwindConfig().theme.colors.blue[400],
-                    tailwindConfig().theme.colors.gray[300],
+                    tailwindConfig().theme.colors.blue[600], // Changed color for better contrast
+                    tailwindConfig().theme.colors.gray[400], // Changed color for better contrast
+                    tailwindConfig().theme.colors.red[400], // Added color for the third component
                 ],
                 hoverBackgroundColor: [
-                    tailwindConfig().theme.colors.blue[500],
-                    tailwindConfig().theme.colors.gray[400],
+                    tailwindConfig().theme.colors.blue[700], // Changed color for better contrast
+                    tailwindConfig().theme.colors.gray[500], // Changed color for better contrast
+                    tailwindConfig().theme.colors.red[500], // Added color for the third component
                 ],
                 borderWidth: 1,
                 borderColor: tailwindConfig().theme.colors.slate[800],

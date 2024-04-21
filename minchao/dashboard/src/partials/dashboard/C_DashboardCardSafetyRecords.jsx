@@ -2,39 +2,42 @@ import React from 'react';
 import DriverSafetyRecordsChart from '../../charts/DriverSafetyRecordsChart';
 import { tailwindConfig, formatValue } from '../../utils/Utils';
 
+
 function SummaryComponent({ data, label, isPeer }) {
-    const accidentsAvg = data.datasets[0].data.reduce((a, b) => a + b, 0) / data.datasets[0].data.length;
-    const violationsAvg = data.datasets[1].data.reduce((a, b) => a + b, 0) / data.datasets[1].data.length;
+    // Calculate total numbers instead of average
+    const totalAccidents = data.datasets[0].data.reduce((a, b) => a + b, 0);
+    const totalViolations = data.datasets[1].data.reduce((a, b) => a + b, 0);
 
     // Define colors based on whether it's peer data or not
     const accidentColor = isPeer ? tailwindConfig().theme.colors.orange[500] : tailwindConfig().theme.colors.red[500];
     const violationColor = isPeer ? tailwindConfig().theme.colors.gray[500] : tailwindConfig().theme.colors.yellow[500];
 
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: accidentColor, fontWeight: 'bold' }}>
-                {Math.round(accidentsAvg)} Average Accidents ({label})
+                {totalAccidents} Total Accidents ({label})
             </span>
             <span style={{ color: violationColor, fontWeight: 'bold' }}>
-                {Math.round(violationsAvg)} Average Traffic Violations ({label})
+                {totalViolations} Total Traffic Violations ({label})
             </span>
         </div>
     );
+
 }
 
 function DashboardCardSafetyRecords() {
     const truckDriverData = {
-        labels: ['01-01-2020', '02-01-2020', '03-01-2020', '04-01-2020', '05-01-2020', '06-01-2020'],
         datasets: [{
             label: 'Number of Accidents',
-            data: [2, 0, 3, 1, 0, 4],
+            data: [0, 0, 1, 0, 0, 0],
             backgroundColor: tailwindConfig().theme.colors.red[400],
             hoverBackgroundColor: tailwindConfig().theme.colors.red[500],
             yAxisID: 'y-accidents',
             type: 'bar',
         }, {
             label: 'Number of Traffic Violations',
-            data: [5, 2, 6, 3, 4, 5],
+            data: [0, 1, 1, 0, 1, 0],
             borderColor: tailwindConfig().theme.colors.yellow[400],
             backgroundColor: 'rgba(0, 0, 0, 0)',
             type: 'line',
@@ -46,14 +49,14 @@ function DashboardCardSafetyRecords() {
         labels: ['01-01-2020', '02-01-2020', '03-01-2020', '04-01-2020', '05-01-2020', '06-01-2020'],
         datasets: [{
             label: 'Number of Accidents',
-            data: [1, 1, 2, 0, 2, 3],
+            data: [0, 0, 0, 0, 0, 0],
             backgroundColor: tailwindConfig().theme.colors.blue[400],
             hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
             yAxisID: 'y-accidents',
             type: 'bar',
         }, {
             label: 'Number of Traffic Violations',
-            data: [4, 3, 5, 2, 3, 4],
+            data: [0, 0, 0, 0, 1, 0],
             borderColor: tailwindConfig().theme.colors.green[400],
             backgroundColor: 'rgba(0, 0, 0, 0)',
             type: 'line',

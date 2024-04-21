@@ -3,17 +3,17 @@ import DriverSafetyRecordsChart from '../../charts/DriverSafetyRecordsChart';
 import { tailwindConfig, formatValue } from '../../utils/Utils';
 
 function SummaryComponent({ data }) {
-    // Calculate average numbers and round them to the nearest whole number for clearer representation
-    const accidentsAvg = data.datasets[0].data.reduce((a, b) => a + b, 0) / data.datasets[0].data.length;
-    const violationsAvg = data.datasets[1].data.reduce((a, b) => a + b, 0) / data.datasets[1].data.length;
+    // Calculate total numbers instead of average
+    const totalAccidents = data.datasets[0].data.reduce((a, b) => a + b, 0);
+    const totalViolations = data.datasets[1].data.reduce((a, b) => a + b, 0);
 
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: tailwindConfig().theme.colors.red[500], fontWeight: 'bold' }}>
-                {accidentsAvg.toFixed(0)} Average Accidents
+                {totalAccidents} Total Accidents
             </span>
             <span style={{ color: tailwindConfig().theme.colors.yellow[500], fontWeight: 'bold' }}>
-                {violationsAvg.toFixed(0)} Average Traffic Violations
+                {totalViolations} Total Traffic Violations
             </span>
         </div>
     );
@@ -23,13 +23,13 @@ function SummaryComponent({ data }) {
 function DashboardCardSafetyRecords() {
     const chartData = {
         labels: [
-            '01-01-2020', '02-01-2020', '03-01-2020',
-            '04-01-2020', '05-01-2020', '06-01-2020',
+            'Jan', 'Feb', 'Mar',
+            'Apr', 'May', 'Jun',
         ],
         datasets: [
             {
                 label: 'Number of Accidents',
-                data: [2, 0, 3, 1, 0, 4],
+                data: [0, 0, 1, 0, 0, 0],
                 backgroundColor: tailwindConfig().theme.colors.red[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.red[500],
                 yAxisID: 'y-accidents',
@@ -37,7 +37,7 @@ function DashboardCardSafetyRecords() {
             },
             {
                 label: 'Number of Traffic Violations',
-                data: [5, 2, 6, 3, 4, 5],
+                data: [0, 1, 1, 0, 1, 0],
                 borderColor: tailwindConfig().theme.colors.yellow[400],
                 backgroundColor: 'rgba(0, 0, 0, 0)',
                 type: 'line',
@@ -55,7 +55,7 @@ function DashboardCardSafetyRecords() {
             <SummaryComponent data={chartData} />
             <DriverSafetyRecordsChart data={chartData} width={595} height={248} />
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Suggestion: Don't be in a hurry and take breaks before driving to improve your concentration while driving</p>
             </div>
 
         </div>

@@ -45,7 +45,7 @@ function DashboardCardTimeAdherence() {
         datasets: [
             {
                 label: 'Departure Delay',
-                data: [5, -3, 0, 2, -1],
+                data: [5, -3, 0, 2, -1, 4],
                 backgroundColor: tailwindConfig().theme.colors.red[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.red[500],
                 borderColor: tailwindConfig().theme.colors.red[700],
@@ -53,7 +53,7 @@ function DashboardCardTimeAdherence() {
             },
             {
                 label: 'Arrival Delay',
-                data: [3, -2, 1, 0, -2],
+                data: [3, -2, 1, 0, -2, 5],
                 backgroundColor: tailwindConfig().theme.colors.blue[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
                 borderColor: tailwindConfig().theme.colors.blue[700],

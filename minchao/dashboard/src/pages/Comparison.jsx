@@ -46,7 +46,7 @@ function Comparison() {
                 <DashboardCardDelivery />
                 <DashboardCardFuelConsumption />
                 <DashboardCardTimeAdherence />
-                <DashboardCardVehicleHealth />
+                {/* <DashboardCardVehicleHealth /> */}
               </div>
             </div>
           </div>

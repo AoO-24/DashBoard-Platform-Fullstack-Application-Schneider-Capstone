@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useThemeProvider } from '../utils/ThemeContext';
 import {
-    Chart, BarController, BarElement, LinearScale, TimeScale, Tooltip, Legend, LineController, LineElement,
-    CategoryScale, PointElement
+    Chart, BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend, LineController, LineElement, PointElement
 } from 'chart.js';
 import 'chartjs-adapter-moment';
 
@@ -12,7 +11,7 @@ import { tailwindConfig, formatValue } from '../utils/Utils';
 // Register necessary chart components
 Chart.register(
     BarController, BarElement, LineController, LineElement,
-    LinearScale, TimeScale, Tooltip, Legend, CategoryScale, PointElement
+    LinearScale, CategoryScale, Tooltip, Legend, PointElement
 );
 
 function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
@@ -30,9 +29,9 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
         const newChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.labels,
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                 datasets: [{
-                    label: 'Average Salary',
+                    label: 'Monthly Salary',
                     data: data.datasets[0].data,
                     backgroundColor: darkMode ? salaryColor[400] : salaryColor[500],
                     hoverBackgroundColor: darkMode ? salaryColor[300] : salaryColor[600],
@@ -41,7 +40,7 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                     barPercentage: 0.6,
                     borderRadius: 4,
                 }, {
-                    label: 'Average Work Hours',
+                    label: 'Monthly Work Hours',
                     data: data.datasets[1].data,
                     type: 'line',
                     borderColor: darkMode ? hoursColor[400] : hoursColor[500],
@@ -63,6 +62,8 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                         type: 'linear',
                         display: true,
                         position: 'left',
+                        min: 3000,
+                        max: 6000,
                         ticks: {
                             callback: (value) => formatValue(value),
                             color: darkMode ? textColor.dark : textColor.light,
@@ -82,8 +83,8 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                         type: 'linear',
                         display: true,
                         position: 'right',
-                        min: 50,
-                        max: 80,
+                        min: 80,
+                        max: 180,
                         ticks: {
                             callback: (value) => `${value} hrs`,
                             color: darkMode ? textColor.dark : textColor.light,
@@ -97,17 +98,7 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                         },
                     },
                     x: {
-                        type: 'time',
-                        time: {
-                            parser: 'MM-DD-YYYY',
-                            unit: 'month',
-                            displayFormats: {
-                                month: 'MMM YY',
-                            },
-                        },
-                        grid: {
-                            display: false,
-                        },
+                        type: 'category', // Changed from 'time' to 'category'
                         ticks: {
                             color: darkMode ? textColor.dark : textColor.light,
                             font: {
@@ -128,7 +119,7 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    label += formatValue(context.parsed.y);
+                                    label += (context.parsed.y);
                                 }
                                 return label;
                             }
@@ -158,7 +149,6 @@ function BarChartTruckDriverSalary({ data, width, height, isPeer }) {
                             },
                             padding: 20,
                             usePointStyle: true,
-                            color: '#4b5563',
                         },
                     },
                 },
