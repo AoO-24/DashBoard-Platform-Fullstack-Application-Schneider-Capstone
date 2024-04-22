@@ -60,7 +60,7 @@ function DashboardCardDelivery() {
                 <BarChartDelivery data={chartData} width={595} height={300} />
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please consider exploring further measures to enhance customer satisfaction and reduce breakage rates. They contribute a big part to your salary.</p>
             </div>
         </div>
     );

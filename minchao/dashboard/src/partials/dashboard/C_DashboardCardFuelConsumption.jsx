@@ -66,16 +66,16 @@ function DashboardCardFuelConsumption() {
             </header>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={truckDriverData} label="Truck Driver" />
+                    <SummaryComponent data={truckDriverData} label="James" />
                     <FuelConsumptionChart data={truckDriverData} width={595} height={300} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={peerData} label="Peer" isPeer={true} />
+                    <SummaryComponent data={peerData} label="Peers" isPeer={true} />
                     <FuelConsumptionChart data={peerData} width={595} height={300} isPeer={true} />
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider exploring energy-efficient driving techniques and vehicle maintenance to reduce fuel consumption.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please consider maintaining a steady speed while driving, especially when accelerating or decelerating, and avoid sudden stops and starts.</p>
             </div>
         </div>
     );

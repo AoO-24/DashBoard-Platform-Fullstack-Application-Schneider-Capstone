@@ -82,16 +82,16 @@ function DashboardCardDelivery() {
             </header>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={truckDriverData} label="Truck Driver" />
+                    <SummaryComponent data={truckDriverData} label="James'" />
                     <BarChartDelivery data={truckDriverData} width={595} height={300} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={peerData} label="Peer" isPeer={true} />
+                    <SummaryComponent data={peerData} label="Peers'" isPeer={true} />
                     <BarChartDelivery data={peerData} width={595} height={300} isPeer={true} />
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider exploring further measures to enhance customer satisfaction and reduce breakage rates across all teams.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please consider exploring further measures to enhance customer satisfaction and reduce breakage rates. They contribute a big part to your salary.</p>
             </div>
         </div>
     );

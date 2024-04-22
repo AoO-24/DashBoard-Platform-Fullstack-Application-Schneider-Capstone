@@ -103,8 +103,8 @@ function TimeAdherenceChart({ data, width, height, isPeer }) {
                     },
                     y: {
                         stacked: true,
-                        min: -6,
-                        max: 10,
+                        min: -15,
+                        max: 30,
                         title: {
                             display: true,
                             text: 'Time Difference (hours)',
