@@ -71,7 +71,7 @@ function DashboardCardSafetyRecords() {
             </header>
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                 <div>
-                    <SummaryComponent data={truckDriverData} label="Truck Driver" />
+                    <SummaryComponent data={truckDriverData} label="James" />
                     <DriverSafetyRecordsChart data={truckDriverData} width={595} height={248} />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ function DashboardCardSafetyRecords() {
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Here is the suggestion: Consider strategies to reduce accidents and violations for both groups through enhanced training programs.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please considering reduce both traffic violations and accidents. They are dangerous and costly!</p>
             </div>
         </div>
     );

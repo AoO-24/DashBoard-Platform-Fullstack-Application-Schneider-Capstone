@@ -32,16 +32,16 @@ function DashboardCardTimeAdherence() {
         labels: ['Stop 1', 'Stop 2', 'Stop 3', 'Stop 4', 'Stop 5'],
         datasets: [
             {
-                label: 'Actual Truck Driver Departure Time',
-                data: [3, -1, 0, 2, -2, 4],
+                label: 'Actual James\' Departure Time',
+                data: [3 * 4, -1 * 4, 0, 2 * 4, -2 * 4, 4 * 4],
                 backgroundColor: tailwindConfig().theme.colors.amber[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.amber[500],
                 borderColor: tailwindConfig().theme.colors.amber[700],
                 borderWidth: 1,
             },
             {
-                label: 'Actual Truck Driver Arrival Time',
-                data: [1, -4, 2, 0, -1, 5],
+                label: 'Actual James\' Arrival Time',
+                data: [1 * 4, -4 * 1.5, 2 * 4, 0, -1 * 4, 5 * 2.5],
                 backgroundColor: tailwindConfig().theme.colors.emerald[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.emerald[500],
                 borderColor: tailwindConfig().theme.colors.emerald[700],
@@ -53,16 +53,16 @@ function DashboardCardTimeAdherence() {
     const peerChartData = {
         datasets: [
             {
-                label: 'Actual Peer Departure Time',
-                data: [2, -2, 1, 1, -1, -2],
+                label: 'Actual Peers Departure Time',
+                data: [2 * 2, -2 * 2, 1 * 2, 1 * 2, -1 * 2, -2 * 2],
                 backgroundColor: tailwindConfig().theme.colors.rose[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.rose[500],
                 borderColor: tailwindConfig().theme.colors.rose[700],
                 borderWidth: 1,
             },
             {
-                label: 'Actual Peer Arrival Time',
-                data: [2, -1, 2, 1, -2, -1],
+                label: 'Actual Peers Arrival Time',
+                data: [2 * 2, -1 * 2, 2 * 2, 1 * 2, -2 * 2, -1 * 2],
                 backgroundColor: tailwindConfig().theme.colors.sky[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.sky[500],
                 borderColor: tailwindConfig().theme.colors.sky[700],
@@ -78,16 +78,16 @@ function DashboardCardTimeAdherence() {
             </header>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={chartData} label="Truck Driver" />
+                    <SummaryComponent data={chartData} label="James" />
                     <TimeAdherenceChart data={chartData} width={595} height={300} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <SummaryComponent data={peerChartData} label="Peer" isPeer={true} />
+                    <SummaryComponent data={peerChartData} label="Peers" isPeer={true} />
                     <TimeAdherenceChart data={peerChartData} width={595} height={300} isPeer={true} />
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Explore scheduling adjustments and traffic pattern analysis to improve time adherence for both truck drivers and peers.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please planing your trips in advance, sets alarms to avoid being late, and arrives at the truck starting point ahead of time.</p>
             </div>
         </div>
     );

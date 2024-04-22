@@ -2,9 +2,11 @@ import React from 'react';
 
 function WelcomeBanner() {
   return (
-    <div className="relative bg-indigo-200 dark:bg-indigo-500 p-4 sm:p-6 rounded-sm overflow-hidden mb-1">
+    <div className="relative bg-gradient-to-r from-indigo-500 to-purple-600 p-6 sm:p-8 rounded-lg shadow-lg overflow-hidden mb-1">
       {/* Background illustration */}
       <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-700 opacity-40 transform rotate-6"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-800 opacity-40 transform -rotate-6"></div> */}
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
           <defs>
             <path id="welcome-a" d="M64 0l64 128-64-20-64 20z" />
@@ -46,9 +48,47 @@ function WelcomeBanner() {
       </div>
 
       {/* Content */}
-      <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1 text-center">Hi, this is Schneider! 👋</h1>
-        <p className="dark:text-indigo-200 text-center">Here's what the truck drivers' performance looks like:</p>
+      <div className="relative z-10">
+        <h1 className="text-3xl md:text-4xl text-white font-bold mb-6 text-center tracking-wider">
+          Monthly Performance Update
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-red-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Break Time</span>
+          </div>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-red-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Driving Adherence</span>
+          </div>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-red-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Customer Satisfaction</span>
+          </div>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-green-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Salary</span>
+          </div>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-green-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Work Time</span>
+          </div>
+          <div className="bg-white bg-opacity-10 rounded-lg p-6 flex flex-col items-center shadow-md transition duration-500 ease-in-out transform hover:scale-105 hover:bg-opacity-20">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-green-500 mb-4 transition duration-500 ease-in-out transform hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+            <span className="text-xl text-white font-semibold tracking-wide">Fuel Consumption</span>
+          </div>        </div>
       </div>
     </div>
   );

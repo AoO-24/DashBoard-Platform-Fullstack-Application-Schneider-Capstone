@@ -39,21 +39,22 @@ function SummaryComponent({ data }) {
     );
 }
 
+
 function DashboardCardTimeAdherence() {
     const chartData = {
         labels: ['Stop 1', 'Stop 2', 'Stop 3', 'Stop 4', 'Stop 5'],
         datasets: [
             {
-                label: 'Departure Delay',
-                data: [5, -3, 0, 2, -1, 4],
+                label: 'Actual Departure Actual Time',
+                data: [3 * 4, -1 * 4, 0, 2 * 4, -2 * 4, 4 * 4],
                 backgroundColor: tailwindConfig().theme.colors.red[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.red[500],
                 borderColor: tailwindConfig().theme.colors.red[700],
                 borderWidth: 1,
             },
             {
-                label: 'Arrival Delay',
-                data: [3, -2, 1, 0, -2, 5],
+                label: 'Actual Arrival Time',
+                data: [1 * 4, -4 * 1.5, 2 * 4, 0, -1 * 4, 5 * 2.5],
                 backgroundColor: tailwindConfig().theme.colors.blue[400],
                 hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
                 borderColor: tailwindConfig().theme.colors.blue[700],
@@ -72,7 +73,7 @@ function DashboardCardTimeAdherence() {
                 <TimeAdherenceChart data={chartData} width={600} height={350} />
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please planing your trips in advance, sets alarms to avoid being late, and arrives at the truck starting point ahead of time.</p>
             </div>
         </div>
     );

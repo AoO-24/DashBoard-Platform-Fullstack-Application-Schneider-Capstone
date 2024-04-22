@@ -16,10 +16,10 @@ function SummaryComponent({ data, isPeer }) {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-around', padding: '10px 0' }}>
             <span style={{ color: salaryTextColor, fontWeight: 'bold' }}>
-                {formattedSalary} Average {isPeer ? 'Peer' : 'Truck Driver'} Salary
+                {formattedSalary} Average {isPeer ? 'Peer' : 'James'} Salary
             </span>
             <span style={{ color: hoursTextColor, fontWeight: 'bold' }}>
-                {formattedHours} hrs Average {isPeer ? 'Peer' : 'Truck Driver'} Work Hours
+                {formattedHours} hrs Average {isPeer ? 'Peer' : 'James'} Work Hours
             </span>
         </div>
     );
@@ -80,7 +80,7 @@ function C_DashboardCardTruckDriverSalary() {
     return (
         <div className="flex flex-col col-span-full sm:col-span-6 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
             <header className="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
-                <h2 className="font-semibold text-slate-800 dark:text-slate-100">Truck Driver vs Peer Salary and Work Hours</h2>
+                <h2 className="font-semibold text-slate-800 dark:text-slate-100">James vs Peer Salary and Work Hours</h2>
             </header>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
@@ -93,7 +93,7 @@ function C_DashboardCardTruckDriverSalary() {
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>{"Here is the suggestion"}</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>{"Please considering a more scheduled work hours each month."}</p>
             </div>
         </div>
     );

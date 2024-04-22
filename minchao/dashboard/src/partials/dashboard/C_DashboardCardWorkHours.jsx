@@ -22,7 +22,7 @@ function SummaryComponent({ data, title }) {
 
 function DashboardCardWorkHours() {
     const driverData = {
-        labels: ['Driving Hours', 'Laytime Hours', 'Idle Hours'],
+        labels: ['Driving Hours', 'Laytime Hours', 'Break Time'],
         datasets: [
             {
                 data: [60, 20, 30],
@@ -44,11 +44,11 @@ function DashboardCardWorkHours() {
     };
 
     const peerData = {
-        labels: ['Driving Hours', 'Laytime Hours', 'Idle Hours'],
+        labels: ['Driving Hours', 'Laytime Hours', 'Break Time'],
         datasets: [
             {
                 label: 'Peers',
-                data: [98, 29, 31],
+                data: [98 + 15, 29, 31 - 15],
                 backgroundColor: [
                     tailwindConfig().theme.colors.blue[600], // Changed color for better contrast
                     tailwindConfig().theme.colors.gray[400], // Changed color for better contrast
@@ -72,16 +72,16 @@ function DashboardCardWorkHours() {
             </header>
             <div className="flex">
                 <div className="w-1/2 p-3">
-                    <SummaryComponent data={driverData} title="Driver" />
+                    <SummaryComponent data={driverData} title="James'" />
                     <WorkHoursChart data={driverData} width={389} height={260} />
                 </div>
                 <div className="w-1/2 p-3">
-                    <SummaryComponent data={peerData} title="Peers" />
+                    <SummaryComponent data={peerData} title="Peers'" />
                     <WorkHoursChart data={peerData} width={389} height={260} />
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Consider redistributing work hours to improve employee satisfaction and productivity.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Please considering decrease break time and improve working/driving efficiency.</p>
             </div>
         </div>
     );

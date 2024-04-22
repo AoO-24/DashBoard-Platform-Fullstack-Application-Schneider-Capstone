@@ -66,16 +66,16 @@ function DashboardCardLoadTypes() {
             </header>
             <div className="flex">
                 <div className="w-1/2 p-3">
-                    <SummaryComponent data={driverData} title="Driver" />
+                    <SummaryComponent data={driverData} title="James'" />
                     <LoadTypesChart data={driverData} width={389} height={260} title="Driver" />
                 </div>
                 <div className="w-1/2 p-3">
-                    <SummaryComponent data={peerData} title="Peers" />
+                    <SummaryComponent data={peerData} title="Peers'" />
                     <LoadTypesChart data={peerData} width={389} height={260} title="Peers" />
                 </div>
             </div>
             <div style={{ backgroundColor: '#f0f9ff', padding: '10px', borderRadius: '4px', margin: '20px' }}>
-                <p style={{ color: '#333', fontSize: '14px' }}>Explore diversifying load types to mitigate risks associated with market fluctuations.</p>
+                <p style={{ color: '#333', fontSize: '14px' }}>Summarization: you mainly focused on transporting Perishable Goods and Hazardous Materials while your peers transported more Oversized Goods.</p>
             </div>
         </div>
     );
