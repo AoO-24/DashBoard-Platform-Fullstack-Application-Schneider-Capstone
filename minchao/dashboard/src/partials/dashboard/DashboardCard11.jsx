@@ -10,7 +10,7 @@ function DashboardCard11() {
     labels: ['Reasons'],
     datasets: [
       {
-        label: 'Decreasing Idle Hours',
+        label: 'Decreasing Break Time',
         data: [131],
         backgroundColor: tailwindConfig().theme.colors.indigo[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],

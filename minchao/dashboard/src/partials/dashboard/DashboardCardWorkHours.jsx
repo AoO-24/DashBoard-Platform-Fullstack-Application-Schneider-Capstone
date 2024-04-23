@@ -21,7 +21,7 @@ function SummaryComponent({ data, title }) {
 
 function DashboardCardWorkHours() {
     const chartData = {
-        labels: ['Driving Hours', 'Laytime Hours', 'Idle Hours'],
+        labels: ['Driving Hours', 'Laytime Hours', 'Break Time'],
         datasets: [
             {
                 data: [60, 20, 30],
