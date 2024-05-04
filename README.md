@@ -36,6 +36,8 @@ The Dashboard includes the following pages:
 - **Analytics:** Detailed analytics and metrics display.
 - **Comparison:** Compare different sets of data or metrics.
 
+All these features mentioned above works.
+
 ## Future Works
 
 1. **User Testing:** Find real users to test the dashboard and gather feedback to refine and improve functionality.
