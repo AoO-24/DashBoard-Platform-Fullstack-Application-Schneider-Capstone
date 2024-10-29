@@ -1,7 +1,7 @@
 # DashBoard Data Analysis Fullstack Application of Schneider Transportation
 ![tt](https://github.com/AoO-24/DashBoard-Platform-Fullstack-Application-Schneider-Capstone/blob/main/Schneider_RGB_Register.svg)
 
-This project, "Dashboard," is a React-based application designed to provide a platform for truck drivers to manage tasks and view performance metrics. It currently features pages for main overview, analytics, and comparison.
+This project, "Dashboard," is a React/Django-based application designed to provide a platform for truck drivers to manage tasks and view performance metrics. It currently features pages for main overview, analytics, and comparison.
 
 ## Getting Started
 
